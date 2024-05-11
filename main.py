@@ -3,6 +3,7 @@ from tkinter import messagebox
 import pandas as pd
 from FuncPerfils.data_management import salvar_perfil
 from FuncPerfils.carregaPerfil import carrega_perfil
+from FuncPerfils.perfilMatri import pesquisar_por_matricula
 
 
 # Função para editar informações do perfil
@@ -67,19 +68,8 @@ def excluir_perfil():
         exportar_para_excel()
 
 # Função para pesquisar por matrícula
-def pesquisar_por_matricula(matricula, perfis):
-    for nome, perfil in perfis.items():
-        if perfil.get("Matricula") == matricula:
-            return nome
-    return None
 
-# Função para verificar parentesco pelo sobrenome
-def verificar_parentesco(sobrenome, perfis):
-    parentescos = []
-    for nome, perfil in perfis.items():
-        if sobrenome in nome and nome != sobrenome:  # Evitar coincidência exata
-            parentescos.append(nome)
-    return parentescos
+
 
 # Inicialização dos perfis
 perfis = carrega_perfil()
@@ -146,6 +136,29 @@ tk.Label(janela_principal, text='Adicionar Ministério:').grid(row=5, column=0)
 entry_ministerio = tk.Entry(janela_principal)
 entry_ministerio.grid(row=5, column=1)
 
+def pesquisar_matricula():
+    def pesquisar():
+        matricula = entry_matricula_pesquisa.get()
+        perfil_encontrado = pesquisar_por_matricula(matricula)
+        if perfil_encontrado:
+            messagebox.showinfo("Perfil Encontrado", f"Nome: {perfil_encontrado}")
+        else:
+            messagebox.showinfo("Perfil não encontrado", f"Nenhum perfil encontrado para a matrícula {matricula}")
+
+    window_pesquisar = tk.Toplevel()
+    window_pesquisar.title('Pesquisar Matrícula')
+
+    tk.Label(window_pesquisar, text='Matrícula:').grid(row=0, column=0)
+    entry_matricula_pesquisa = tk.Entry(window_pesquisar)
+    entry_matricula_pesquisa.grid(row=0, column=1)
+
+    btn_pesquisar = tk.Button(window_pesquisar, text='Pesquisar', command=pesquisar)
+    btn_pesquisar.grid(row=1, column=0, columnspan=2)
+
+btn_pesquisar_matricula = tk.Button(janela_principal, text='Pesquisar Matrícula', command=pesquisar_matricula)
+btn_pesquisar_matricula.grid(row=9, column=0, columnspan=2)
+
+# Adicionando os botões "Salvar" e "Excluir" de volta na janela principal
 btn_adicionar = tk.Button(janela_principal, text='Adicionar', command=adicionar_perfil)
 btn_adicionar.grid(row=6, column=0, columnspan=2)
 
@@ -155,8 +168,11 @@ btn_excluir.grid(row=7, column=0, columnspan=2)
 btn_ver_perfil = tk.Button(janela_principal, text='Ver Perfil', command=ver_perfil)
 btn_ver_perfil.grid(row=8, column=0, columnspan=2)
 
+
 listbox_nomes = tk.Listbox(janela_principal, width=60, height=15)
 listbox_nomes.grid(row=10, column=0, columnspan=2)
+
+janela_principal.mainloop()
 
 # Adicionando nomes existentes na Listbox
 for nome in perfis.keys():
