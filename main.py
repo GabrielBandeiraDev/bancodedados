@@ -4,6 +4,7 @@ import pandas as pd
 from FuncPerfils.data_management import salvar_perfil
 from FuncPerfils.carregaPerfil import carrega_perfil
 from FuncPerfils.perfilMatri import pesquisar_por_matricula
+from FuncPerfils.exporExcel import exportar_para_excel
 
 
 # Função para editar informações do perfil
@@ -102,10 +103,7 @@ def ver_perfil():
         # Após ver o perfil, exportar para o Excel
         exportar_para_excel()
 
-# Função para exportar os dados para um arquivo Excel
-def exportar_para_excel():
-    df = pd.DataFrame.from_dict(perfis, orient='index')
-    df.to_excel('perfis.xlsx')
+# # Função para exportar os dados para um arquivo Excel (FUNÇÃO ALOCADA PARA O exporExcel.py)
 
 # Criar a janela principal
 janela_principal = tk.Tk()
