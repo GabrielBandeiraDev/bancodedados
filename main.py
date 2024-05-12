@@ -19,7 +19,7 @@ def editar_info(perfil):
         window_editar.destroy()
 
         # Após salvar as edições, exportar para o Excel
-        exportar_para_excel()
+        exportar_para_excel(perfis)
 
     window_editar = tk.Toplevel()
     window_editar.title('Editar Perfil')
@@ -66,7 +66,7 @@ def excluir_perfil():
         salvar_perfil(perfis)
         
         # Após excluir o perfil, exportar para o Excel
-        exportar_para_excel()
+        exportar_para_excel(perfis)
 
 # Função para pesquisar por matrícula
 
@@ -91,7 +91,7 @@ def adicionar_perfil():
     salvar_perfil(perfis)
     
     # Após adicionar o perfil, exportar para o Excel
-    exportar_para_excel()
+    exportar_para_excel(perfis)
 
 # Função para exibir todas as informações de um perfil
 def ver_perfil():
@@ -101,7 +101,7 @@ def ver_perfil():
         messagebox.showinfo("Informações do Perfil", f"Informações de {nome_selecionado}:\n\n{perfil_selecionado}")
         
         # Após ver o perfil, exportar para o Excel
-        exportar_para_excel()
+        exportar_para_excel(perfis)
 
 # # Função para exportar os dados para um arquivo Excel (FUNÇÃO ALOCADA PARA O exporExcel.py)
 
