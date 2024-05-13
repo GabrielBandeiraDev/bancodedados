@@ -68,10 +68,6 @@ def excluir_perfil():
         # Após excluir o perfil, exportar para o Excel
         exportar_para_excel(perfis)
 
-# Função para pesquisar por matrícula
-
-
-
 # Inicialização dos perfis
 perfis = carrega_perfil()
 
@@ -137,7 +133,7 @@ entry_ministerio.grid(row=5, column=1)
 def pesquisar_matricula():
     def pesquisar():
         matricula = entry_matricula_pesquisa.get()
-        perfil_encontrado = pesquisar_por_matricula(matricula)
+        perfil_encontrado = pesquisar_por_matricula(matricula, perfis)  # Pass the 'perfis' dictionary as an argument
         if perfil_encontrado:
             messagebox.showinfo("Perfil Encontrado", f"Nome: {perfil_encontrado}")
         else:
@@ -170,7 +166,6 @@ btn_ver_perfil.grid(row=8, column=0, columnspan=2)
 listbox_nomes = tk.Listbox(janela_principal, width=60, height=15)
 listbox_nomes.grid(row=10, column=0, columnspan=2)
 
-janela_principal.mainloop()
 
 # Adicionando nomes existentes na Listbox
 for nome in perfis.keys():
