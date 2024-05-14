@@ -5,8 +5,7 @@ from FuncPerfils.carregaPerfil import carrega_perfil
 from FuncPerfils.perfilMatri import pesquisar_por_matricula
 from FuncPerfils.exporExcel import exportar_para_excel
 from FuncPerfils.verperfil import ver_perfil
-
-# Importar a função editar_info do arquivo editarinfo.py
+from FuncPerfils.excluirPerfil import excluir_perfil
 from FuncPerfils.editarinfo import editar_info
 
 
@@ -22,18 +21,6 @@ def salvar(perfil, perfis):
 
     # Após salvar as edições, exportar para o Excel
     exportar_para_excel(perfis)  # Chamando a função corretamente
-
-
-# Função para excluir um perfil
-def excluir_perfil():
-    nome_selecionado = listbox_nomes.get(tk.ACTIVE)
-    if messagebox.askyesno('Excluir Perfil', f'Deseja excluir o perfil de {nome_selecionado}?'):
-        listbox_nomes.delete(tk.ACTIVE)
-        perfis.pop(nome_selecionado, None)
-        salvar_perfil(perfis)
-
-        # Após excluir o perfil, exportar para o Excel
-        exportar_para_excel(perfis)  # Chamando a função corretamente
 
 
 # Função para adicionar um novo perfil
@@ -135,7 +122,7 @@ btn_pesquisar_matricula.grid(row=9, column=0, columnspan=2)
 btn_adicionar = tk.Button(janela_principal, text='Adicionar', command=adicionar_perfil)
 btn_adicionar.grid(row=6, column=0, columnspan=2)
 
-btn_excluir = tk.Button(janela_principal, text='Excluir', command=excluir_perfil)
+btn_excluir = tk.Button(janela_principal, text='Excluir', command=lambda: excluir_perfil(listbox_nomes, perfis))
 btn_excluir.grid(row=7, column=0, columnspan=2)
 
 btn_ver_perfil = tk.Button(janela_principal, text='Ver Perfil', command=ver_perfil)
