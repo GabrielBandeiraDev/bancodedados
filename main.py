@@ -142,12 +142,10 @@ btn_ver_perfil = tk.Button(janela_principal, text='Ver Perfil', command=ver_perf
 btn_ver_perfil.grid(row=8, column=0, columnspan=2)
 
 btn_editar_info = tk.Button(janela_principal, text='Editar Informação', command=editar_informacao)
-btn_editar_info.grid(row=9, column=0, columnspan=2)
+btn_editar_info.grid(row=10, column=0, columnspan=2)
 
 listbox_nomes = tk.Listbox(janela_principal, width=60, height=15)
-listbox_nomes.grid(row=10, column=0, columnspan=2)
-
-janela_principal.mainloop()
+listbox_nomes.grid(row=11, column=0, columnspan=2)
 
 # Adicionando nomes existentes na Listbox
 for nome in perfis.keys():
