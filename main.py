@@ -6,8 +6,6 @@ from FuncPerfils.carregaPerfil import carrega_perfil
 from FuncPerfils.perfilMatri import pesquisar_por_matricula
 from FuncPerfils.exporExcel import exportar_para_excel
 from FuncPerfils.verperfil import ver_perfil
-from FuncPerfils.verperfil import exportar_para_excel
-
 
 # Função para excluir um perfil
 def excluir_perfil():
