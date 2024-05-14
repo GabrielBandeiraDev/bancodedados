@@ -11,7 +11,7 @@ def editar_info(perfil, perfis):
         perfil['Ministerio'] = edit_ministerio.get()
         window_editar.destroy()
 
-        # Após salvar as edições, exportar para o Excel
+
         exportar_para_excel(perfis)
 
     window_editar = tk.Toplevel()
