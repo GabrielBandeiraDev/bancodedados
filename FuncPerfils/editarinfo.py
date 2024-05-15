@@ -1,6 +1,6 @@
 import tkinter as tk
-import exporExcel
 
+from FuncPerfils.exporExcel import exportar_para_excel
 def editar_info(perfil, perfis):
     def salvar():
         perfil['Nome'] = edit_nome.get()
@@ -11,8 +11,8 @@ def editar_info(perfil, perfis):
         perfil['Ministerio'] = edit_ministerio.get()
         window_editar.destroy()
 
-        # Após salvar as edições, exportar para o Excel
-        exporExcel.exportar_para_excel(perfis)
+
+        exportar_para_excel(perfis)
 
     window_editar = tk.Toplevel()
     window_editar.title('Editar Perfil')

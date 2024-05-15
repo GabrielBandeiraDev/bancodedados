@@ -1,25 +1,27 @@
 import tkinter as tk
 from tkinter import messagebox
-import pandas as pd
 from FuncPerfils.data_management import salvar_perfil
 from FuncPerfils.carregaPerfil import carrega_perfil
 from FuncPerfils.perfilMatri import pesquisar_por_matricula
 from FuncPerfils.exporExcel import exportar_para_excel
 from FuncPerfils.verperfil import ver_perfil
+from FuncPerfils.excluirPerfil import excluir_perfil
+from FuncPerfils.editarinfo import editar_info
 
-# Função para excluir um perfil
-def excluir_perfil():
-    nome_selecionado = listbox_nomes.get(tk.ACTIVE)
-    if messagebox.askyesno('Excluir Perfil', f'Deseja excluir o perfil de {nome_selecionado}?'):
-        listbox_nomes.delete(tk.ACTIVE)
-        perfis.pop(nome_selecionado, None)
-        salvar_perfil(perfis)
-        
-        # Após excluir o perfil, exportar para o Excel
-        exportar_para_excel(perfis)
 
-# Inicialização dos perfis
-perfis = carrega_perfil()
+# Função para editar informações do perfil
+def salvar(perfil, perfis):
+    perfil['Nome'] = edit_nome.get()
+    perfil['Matricula'] = edit_matricula.get()
+    perfil['Celular'] = edit_celular.get()
+    perfil['Cargo'] = edit_cargo.get()
+    perfil['Idade'] = edit_idade.get()
+    perfil['Ministerio'] = edit_ministerio.get()
+    window_editar.destroy()
+
+    # Após salvar as edições, exportar para o Excel
+    exportar_para_excel(perfis)  # Chamando a função corretamente
+
 
 # Função para adicionar um novo perfil
 def adicionar_perfil():
@@ -35,11 +37,33 @@ def adicionar_perfil():
     perfis[novo_nome] = novo_perfil
     listbox_nomes.insert(tk.END, novo_nome)
     salvar_perfil(perfis)
-    
+
     # Após adicionar o perfil, exportar para o Excel
     exportar_para_excel(perfis)
 
-# # Função para exportar os dados para um arquivo Excel (FUNÇÃO ALOCADA PARA O exporExcel.py)
+
+# Função para exibir todas as informações de um perfil
+def ver_perfil():
+    nome_selecionado = listbox_nomes.get(tk.ACTIVE)
+    perfil_selecionado = perfis.get(nome_selecionado)
+    if perfil_selecionado:
+        messagebox.showinfo("Informações do Perfil", f"Informações de {nome_selecionado}:\n\n{perfil_selecionado}")
+
+        # Após ver o perfil, exportar para o Excel
+        exportar_para_excel(perfis)
+
+
+# Função para editar informações do perfil
+def editar_informacao():
+    nome_selecionado = listbox_nomes.get(tk.ACTIVE)
+    perfil_selecionado = perfis.get(nome_selecionado)
+    if perfil_selecionado:
+        # Chamar a função editar_info
+        editar_info(perfil_selecionado, perfis)
+
+
+# Inicialização dos perfis
+perfis = carrega_perfil()
 
 # Criar a janela principal
 janela_principal = tk.Tk()
@@ -70,10 +94,11 @@ tk.Label(janela_principal, text='Adicionar Ministério:').grid(row=5, column=0)
 entry_ministerio = tk.Entry(janela_principal)
 entry_ministerio.grid(row=5, column=1)
 
+
 def pesquisar_matricula():
     def pesquisar():
         matricula = entry_matricula_pesquisa.get()
-        perfil_encontrado = pesquisar_por_matricula(matricula, perfis)  # Pass the 'perfis' dictionary as an argument
+        perfil_encontrado = pesquisar_por_matricula(matricula)
         if perfil_encontrado:
             messagebox.showinfo("Perfil Encontrado", f"Nome: {perfil_encontrado}")
         else:
@@ -89,23 +114,25 @@ def pesquisar_matricula():
     btn_pesquisar = tk.Button(window_pesquisar, text='Pesquisar', command=pesquisar)
     btn_pesquisar.grid(row=1, column=0, columnspan=2)
 
+
 btn_pesquisar_matricula = tk.Button(janela_principal, text='Pesquisar Matrícula', command=pesquisar_matricula)
 btn_pesquisar_matricula.grid(row=9, column=0, columnspan=2)
 
-# Adicionando os botões "Salvar" e "Excluir" de volta na janela principal
+# Adicionando os botões "Salvar", "Excluir", "Ver Perfil" e "Editar Informação"
 btn_adicionar = tk.Button(janela_principal, text='Adicionar', command=adicionar_perfil)
 btn_adicionar.grid(row=6, column=0, columnspan=2)
 
-btn_excluir = tk.Button(janela_principal, text='Excluir', command=excluir_perfil)
+btn_excluir = tk.Button(janela_principal, text='Excluir', command=lambda: excluir_perfil(listbox_nomes, perfis))
 btn_excluir.grid(row=7, column=0, columnspan=2)
 
 btn_ver_perfil = tk.Button(janela_principal, text='Ver Perfil', command=ver_perfil)
 btn_ver_perfil.grid(row=8, column=0, columnspan=2)
 
+btn_editar_info = tk.Button(janela_principal, text='Editar Informação', command=editar_informacao)
+btn_editar_info.grid(row=10, column=0, columnspan=2)
 
 listbox_nomes = tk.Listbox(janela_principal, width=60, height=15)
-listbox_nomes.grid(row=10, column=0, columnspan=2)
-
+listbox_nomes.grid(row=11, column=0, columnspan=2)
 
 # Adicionando nomes existentes na Listbox
 for nome in perfis.keys():
