@@ -6,6 +6,7 @@ def ver_perfil(perfis, listbox_nomes):
     if perfil_selecionado:
         # Create a new tkinter window
         window = tk.Tk()
+        window.title(f"Perfil de {nome_selecionado}")
               
         # Create labels for each key-value pair in the profile dictionary
         row = 1
