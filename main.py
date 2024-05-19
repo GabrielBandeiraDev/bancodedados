@@ -73,18 +73,6 @@ def adicionar_perfil():
     # Após adicionar o perfil, exportar para o Excel
     exportar_para_excel(perfis)
 
-
-# Função para exibir todas as informações de um perfil
-def ver_perfil():
-    nome_selecionado = listbox_nomes.get(tk.ACTIVE)
-    perfil_selecionado = perfis.get(nome_selecionado)
-    if perfil_selecionado:
-        messagebox.showinfo("Informações do Perfil", f"Informações de {nome_selecionado}:\n\n{perfil_selecionado}")
-
-        # Após ver o perfil, exportar para o Excel
-        exportar_para_excel(perfis)
-
-
 # Função para editar informações do perfil
 def editar_informacao():
     nome_selecionado = listbox_nomes.get(tk.ACTIVE)
@@ -210,7 +198,7 @@ btn_adicionar.grid(row=20, column=0, columnspan=2)
 btn_excluir = tk.Button(janela_principal, text='Excluir', command=lambda: excluir_perfil(listbox_nomes, perfis))
 btn_excluir.grid(row=21, column=0, columnspan=2)
 
-btn_ver_perfil = tk.Button(janela_principal, text='Ver Perfil', command=ver_perfil)
+btn_ver_perfil = tk.Button(janela_principal, text='Ver Perfil', command=lambda: ver_perfil(perfis, listbox_nomes))
 btn_ver_perfil.grid(row=22, column=0, columnspan=2)
 
 btn_editar_info = tk.Button(janela_principal, text='Editar Informação', command=editar_informacao)
