@@ -17,7 +17,7 @@ from banco import *
 
 # cores
 co0 = "#2e2d2b"  # Preta
-co1 = "#feffff"  # Branca   
+co1 = "#feffff"  # Branca
 co2 = "#e5e5e5"  # grey
 co3 = "#00a095"  # Verde
 co4 = "#403d3d"   # letra
@@ -27,7 +27,7 @@ co6 = "#003452"   # azul
 # janelas 
 janela = Tk()
 janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
-janela.geometry('')
+janela.geometry('1200x600')
 janela.configure(background=co1)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -35,36 +35,36 @@ style = Style(janela)
 style.theme_use("clam")
 
 # Frames
-frame_logo = Frame(janela, width=850, height=52, bg=co6)
+frame_logo = Frame(janela, width=1200, height=70, bg=co6)
 frame_logo.grid(row=0, column=0, pady=0, padx=0, sticky=NSEW, columnspan=5)
 
 frame_botoes = Frame(janela, width=100, height=200, bg=co1, relief=RAISED)
 frame_botoes.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
 
-frame_detalhes = Frame(janela, width=800, height=100, bg=co1, relief=SOLID)
+frame_detalhes = Frame(janela, width=1200, height=100, bg=co1, relief=SOLID)
 frame_detalhes.grid(row=1, column=1, pady=1, padx=10, sticky=NSEW)
 
-frame_tabela = Frame(janela, width=850, height=200, bg=co1)
+frame_tabela = Frame(janela, width=1200, height=200, bg=co1)
 frame_tabela.grid(row=3, column=0, pady=0, padx=10, sticky=NSEW, columnspan=5)
 
 
 # frame Logo
 global imagem, imagem_string, l_imagem
 
-app_lg = Image.open('logo.png')
-app_lg = app_lg.resize((50,50))
+app_lg = Image.open('assets/logo.png')
+app_lg = app_lg.resize((65,65))
 app_lg = ImageTk.PhotoImage(app_lg)
-app_logo = Label(frame_logo, image=app_lg, text=" APAM - Associação Mato-Grossense Protetora dos Animais", width=850, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1)
+app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grossense Protetora dos Animais", width=1200, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1, padx=20)
 app_logo.place(x=5, y=0)
 
 
 # abrindo a imagem
-imagem  = Image.open('logo.png')
+imagem  = Image.open('assets/logo.png')
 imagem = imagem.resize((130, 130))
 imagem = ImageTk.PhotoImage(imagem)
 
 l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-l_imagem.place(x=650, y=10)
+l_imagem.place(x=755, y=10)
 
 # ------------- funcoes para CRUD ---------------
 
@@ -88,7 +88,7 @@ def adicionar():
 
 	# Verificando caso algum campo esteja vazio ou nao
 	for i in lista:
-		if i=='':
+		if i == '':
 			messagebox.showerror('Erro', 'Preencha todos os campos')
 			return
 
@@ -131,7 +131,7 @@ def procurar():
 	c_sexo.delete(0,END)
 	t_temperamento.delete(0,END)
 
-	# inser os valores
+	# insere os valores
 	e_nome.insert(END,dados[1])
 	c_cpf.insert(END,dados[2])
 	data_nascimento(END,dados[3])
@@ -152,7 +152,7 @@ def procurar():
 	imagem = ImageTk.PhotoImage(imagem)
 
 	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=650, y=10)
+	l_imagem.place(x=755, y=10)
 
 
 # funcao atualizar
@@ -178,7 +178,7 @@ def atualizar():
 
 	# Verificando caso algum campo esteja vazio ou nao
 	for i in lista:
-		if i=='':
+		if i == '':
 			messagebox.showerror('Erro', 'Preencha todos os campos')
 			return
 
@@ -197,12 +197,12 @@ def atualizar():
 	t_temperamento.delete(0,END)
 
 	# abre a imagem
-	imagem  = Image.open('logo.png')
+	imagem  = Image.open('assets/logo.png')
 	imagem = imagem.resize((130, 130))
 	imagem = ImageTk.PhotoImage(imagem)
 
 	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=650, y=10)
+	l_imagem.place(x=755, y=10)
 
 	# mostrando os valores na Tabela
 	mostrar_tabela()
@@ -233,12 +233,12 @@ def deletar():
 	e_procurar.delete(0,END)
 
 	# abrindo a imagem
-	imagem  = Image.open('logo.png')
+	imagem  = Image.open('assets/logo.png')
 	imagem = imagem.resize((130, 130))
 	imagem = ImageTk.PhotoImage(imagem)
 
 	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=650, y=10)
+	l_imagem.place(x=755, y=10)
 
 	# mostrando os valores na Tabela
 	mostrar_tabela()
@@ -251,14 +251,14 @@ e_nome = Entry(frame_detalhes, width=30, justify='left', relief='solid')
 e_nome.place(x=7, y=40)
 
 l_cpf = Label(frame_detalhes, text="CPF *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_cpf.place(x=220, y=10)
+l_cpf.place(x=260, y=10)
 c_cpf = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-c_cpf.place(x=224, y=40)
+c_cpf.place(x=260, y=40)
 
 l_data_nascimento = Label(frame_detalhes, text="Data de nascimento *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_data_nascimento.place(x=430, y=10)
+l_data_nascimento.place(x=515, y=10)
 data_nascimento = DateEntry(frame_detalhes, width=18, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
-data_nascimento.place(x=434, y=40)
+data_nascimento.place(x=515, y=40)
 
 l_email = Label(frame_detalhes, text="Email *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_email.place(x=4, y=70)
@@ -266,14 +266,14 @@ e_email = Entry(frame_detalhes, width=30, justify='left', relief='solid')
 e_email.place(x=7, y=100)
 
 l_endereco = Label(frame_detalhes, text="Endereço *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_endereco.place(x=220, y=70)
+l_endereco.place(x=260, y=70)
 e_endereco = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-e_endereco.place(x=224, y=100)
+e_endereco.place(x=260, y=100)
 
 l_matricula = Label(frame_detalhes, text="Matricula *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_matricula.place(x=430, y=70)
+l_matricula.place(x=515, y=70)
 e_matricula = Entry(frame_detalhes, width=18, justify='left', relief='solid')
-e_matricula.place(x=434, y=100)
+e_matricula.place(x=515, y=100)
 
 l_tel = Label(frame_detalhes, text="Telefone *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_tel.place(x=4, y=130)
@@ -282,10 +282,10 @@ e_tel.place(x=7, y=160)
 
 # selecao de sexo
 l_sexo = Label(frame_detalhes, text="Sexo *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_sexo.place(x=127, y=130)
+l_sexo.place(x=262, y=130)
 c_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='center')
 c_sexo['values'] = ('M','F')
-c_sexo.place(x=130, y=160)
+c_sexo.place(x=262, y=160)
 
 # Pegando os temperamentos dos animais
 temperamentos_animais = ['Agressivo', 'Tímido', 'Passivo-agressivo', 'Sociável', 'Independente']
@@ -295,10 +295,10 @@ for i in temperamentos_animais:
 	temperamento.append(i)
 
 l_temperamento = Label(frame_detalhes, text="Temperamento *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_temperamento.place(x=220, y=130)
+l_temperamento.place(x=517, y=130)
 t_temperamento = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'))
 t_temperamento['values'] = (temperamento)
-t_temperamento.place(x=224, y=160)
+t_temperamento.place(x=517, y=160)
 
 
 # funcao para escolher imagem
@@ -314,12 +314,12 @@ def escolher_imagem():
 	imagem = imagem.resize((130,130))
 	imagem = ImageTk.PhotoImage(imagem)
 	l_imagem = Label(frame_detalhes, image=imagem, bg=co1, fg=co4)
-	l_imagem.place(x=650, y=10)
+	l_imagem.place(x=755, y=10)
 
 	botao_carregar['text'] = 'Trocar de foto'
 
 botao_carregar = Button(frame_detalhes, command=escolher_imagem, text="Carregar Foto".upper(), width=20, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
-botao_carregar.place(x=650, y=160)
+botao_carregar.place(x=755, y=160)
 
 
 # Tabela do banco apam
@@ -327,7 +327,7 @@ def mostrar_tabela():
 
 	# area do scrollbars
 	#list_header = ['id','Nome','email',  'Telefone','sexo','Data', 'Endereço','temperamento']
-	list_header = ['id', 'Nome', 'Cpf', 'Matricula', 'Email', 'Telefone','Sexo','Data Nascimento', 'Endereço', 'Temperamento']
+	list_header = ['id', 'Nome', 'CPF', 'Matricula', 'Email', 'Telefone','Sexo','Data Nascimento', 'Endereço', 'Temperamento']
 
 	# visualiza as informações do banco apam
 	df_list = registration_system.view_all_bancoapam()
@@ -348,7 +348,7 @@ def mostrar_tabela():
 	frame_tabela.grid_rowconfigure(0, weight=12)
 
 	hd=["center","nw","center","center","center","center","center","center","nw","center"]
-	h=[40,150,80,80,180,80,40,100,180,100]
+	h=[116,116,116,116,116,116,60,152,116,136]
 	n=0
 
 	for col in list_header:
@@ -357,7 +357,7 @@ def mostrar_tabela():
 		# ajustes das colunas dentro do scrollbar
 		tree_apam.column(col, width=h[n],anchor=hd[n])
 
-		n+=1
+		n += 1
 
 	for item in df_list:
 		tree_apam.insert('', 'end', values=item)
@@ -389,19 +389,19 @@ botao_procurar.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
 
 # Botoes
 
-app_img_adicionar = Image.open('add.png')
+app_img_adicionar = Image.open('assets/add.png')
 app_img_adicionar = app_img_adicionar.resize((25,25))
 app_img_adicionar = ImageTk.PhotoImage(app_img_adicionar)
 app_adicionar = Button(frame_botoes, command=adicionar, image=app_img_adicionar, text=" Adicionar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_adicionar.grid(row=1, column=0, pady=5, padx=10, sticky=NSEW)
 
-app_img_atualizar = Image.open('update.png')
+app_img_atualizar = Image.open('assets/update.png')
 app_img_atualizar = app_img_atualizar.resize((25,25))
 app_img_atualizar = ImageTk.PhotoImage(app_img_atualizar)
 app_atualizar = Button(frame_botoes,command=atualizar, image=app_img_atualizar, text=" Atualizar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_atualizar.grid(row=2, column=0, pady=5, padx=10, sticky=NSEW)
 
-app_img_deletar = Image.open('delete.png')
+app_img_deletar = Image.open('assets/delete.png')
 app_img_deletar = app_img_deletar.resize((25,25))
 app_img_deletar = ImageTk.PhotoImage(app_img_deletar)
 app_deletar = Button(frame_botoes, command=deletar, image=app_img_deletar, text=" Deletar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
@@ -411,7 +411,7 @@ app_deletar.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
 # linha separatoria
 
 l_linha = Label(frame_botoes, relief=GROOVE, text='h', width=1, height=123, anchor=NW, font=('Ivy 1'), bg=co1, fg=co0)
-l_linha.place(x=238, y=15)
+l_linha.place(x=265, y=0)
 
 
 # ver a tabela de cadastro
