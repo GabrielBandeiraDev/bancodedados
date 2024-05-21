@@ -1,7 +1,8 @@
-/venv
+venv/*
 .env
-.pyc
-__pycache__/
-.vscode/
+*.pyc
+__pycache__/*
+.vscode/*
 FuncPerfils/__pycache__/*
-.pickle
+*.pickle
+test.py
