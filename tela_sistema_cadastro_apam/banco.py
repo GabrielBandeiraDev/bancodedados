@@ -17,8 +17,9 @@ class RegistrationSystem:
         for coluna_db in db:
             colunas.append(coluna_db[1])
         self.conn.commit()
+        print(colunas)
+        colunas.pop(0)
         return colunas
-
 
 # Corrigir tipagem de dados
     def create_tables(self):
@@ -50,7 +51,9 @@ class RegistrationSystem:
         colunas = self.get_columns(table=table)
         inter = ['?'] * len(colunas)  # Lista de valores para serem inseridos na consulta
         query = f"INSERT INTO {table}({', '.join(colunas)}) VALUES ({','.join(inter)})"
-        self.c.execute(query, tuple(values_table))
+        print(query)
+        print(values_table)
+        self.c.execute(query, values_table)
         self.conn.commit()
 
 
