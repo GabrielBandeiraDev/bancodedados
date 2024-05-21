@@ -5,3 +5,4 @@ __pycache__/*
 .vscode/*
 FuncPerfils/__pycache__/*
 *.pickle
+test.py
