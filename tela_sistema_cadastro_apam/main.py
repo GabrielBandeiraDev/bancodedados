@@ -105,18 +105,7 @@ def adicionar():
     sexo = c_sexo.get()
     temperamento = t_temperamento.get()
     img = imagem_string
-
-   
-    estado_civil = "Solteiro(a)"  
-    naturalidade = "Brasil" 
-    endereco_empresa = "Endereço da Empresa"  
-    valor_colaborar = 0.0 
-    nome_empresa = "Nome da Empresa" 
-    profissao = "Profissão" 
-    em_que_pode_ajuar_apam = "Formas de ajudar APAM" 
-    outras_formas_de_ajudar_apam = "Outras formas de ajudar APAM"  
-    expectativa_trabalho_voluntario = "Expectativas do trabalho voluntário" 
-
+       
     
     lista = [nome, cpf, data, email, endereco, matricula, tel, sexo, temperamento, img]
     for i in lista:
