@@ -27,7 +27,7 @@ co6 = "#003452"   # azul
 # janelas 
 janela = Tk()
 janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
-janela.geometry('1200x600')
+janela.geometry('1200x900')
 janela.configure(background=co1)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -45,7 +45,7 @@ frame_detalhes = Frame(janela, width=1200, height=100, bg=co1, relief=SOLID)
 frame_detalhes.grid(row=1, column=1, pady=1, padx=10, sticky=NSEW)
 
 frame_tabela = Frame(janela, width=1200, height=200, bg=co1)
-frame_tabela.grid(row=3, column=0, pady=0, padx=10, sticky=NSEW, columnspan=5)
+frame_tabela.grid(row=2, column=0, pady=300, padx=10, sticky=NSEW, columnspan=5)
 
 
 # frame Logo
@@ -410,7 +410,7 @@ app_deletar.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
 
 # linha separatoria
 
-l_linha = Label(frame_botoes, relief=GROOVE, text='h', width=1, height=123, anchor=NW, font=('Ivy 1'), bg=co1, fg=co0)
+l_linha = Label(frame_botoes, relief=GROOVE, text='h', width=2, height=600, anchor=NW, font=('Ivy 1'), bg=co1, fg=co0)
 l_linha.place(x=265, y=0)
 
 
