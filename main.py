@@ -10,51 +10,51 @@ from FuncPerfils.editarinfo import editar_info
 
 # Função para salvar as informações editadas
 def salvar(perfil, perfis):
-    perfil['Nome'] = entries['Nome Completo:'].get()
-    perfil['Matricula'] = entries['Matrícula:'].get()
-    perfil['Celular'] = entries['Número de Celular:'].get()
-    perfil['Número fixo'] = entries['Número fixo:'].get()
-    perfil['Telefone da empresa de trabalho'] = entries['Telefone da empresa de trabalho:'].get()
-    perfil['Cargo'] = entries['Cargo:'].get()
-    perfil['Data de Nascimento'] = entries['Data de Nascimento:'].get()
-    perfil['Data'] = entries['Data:'].get()
-    perfil['CPF'] = entries['CPF:'].get()
-    perfil['RG'] = entries['RG:'].get()
-    perfil['Gênero'] = entries['Gênero:'].get()
-    perfil['Email'] = entries['Email:'].get()
-    perfil['Endereço completo'] = entries['Endereço completo:'].get()
-    perfil['Nome da empresa de trabalho'] = entries['Nome da empresa de trabalho:'].get()
-    perfil['Profissão'] = entries['Profissão:'].get()
-    perfil['Naturalidade'] = entries['Naturalidade:'].get()
-    perfil['Endereço da empresa de trabalho'] = entries['Endereço da empresa de trabalho:'].get()
-    perfil['Com qual valor mensal poderia colaborar?'] = entries['Com qual valor mensal poderia colaborar?:'].get()
-    perfil['Estado Civil'] = entries['Estado Civil:'].get()
+    perfil['Nome'] = entries['Nome Completo'].get()
+    perfil['Matricula'] = entries['Matrícula'].get()
+    perfil['Celular'] = entries['Número de Celular'].get()
+    perfil['Número fixo'] = entries['Número fixo'].get()
+    perfil['Telefone da empresa de trabalho'] = entries['Telefone da empresa de trabalho'].get()
+    perfil['Cargo'] = entries['Cargo'].get()
+    perfil['Data de Nascimento'] = entries['Data de Nascimento'].get()
+    perfil['Data'] = entries['Data'].get()
+    perfil['CPF'] = entries['CPF'].get()
+    perfil['RG'] = entries['RG'].get()
+    perfil['Gênero'] = entries['Gênero'].get()
+    perfil['Email'] = entries['Email'].get()
+    perfil['Endereço completo'] = entries['Endereço completo'].get()
+    perfil['Nome da empresa de trabalho'] = entries['Nome da empresa de trabalho'].get()
+    perfil['Profissão'] = entries['Profissão'].get()
+    perfil['Naturalidade'] = entries['Naturalidade'].get()
+    perfil['Endereço da empresa de trabalho'] = entries['Endereço da empresa de trabalho'].get()
+    perfil['Com qual valor mensal poderia colaborar?'] = entries['Com qual valor mensal poderia colaborar?'].get()
+    perfil['Estado Civil'] = entries['Estado Civil'].get()
 
     window_editar.destroy()
     exportar_para_excel(perfis)
 
 def adicionar_perfil():
-    novo_nome = entries['Nome Completo:'].get()
+    novo_nome = entries['Nome Completo'].get()
     novo_perfil = {
         "Nome": novo_nome,
-        "Matricula": entries['Matrícula:'].get(),
-        "Celular": entries['Número de Celular:'].get(),
-        "Número fixo": entries['Número fixo:'].get(),
-        "Telefone da empresa de trabalho": entries['Telefone da empresa de trabalho:'].get(),
-        "Cargo": entries['Cargo:'].get(),
-        "Data de Nascimento": entries['Data de Nascimento:'].get(),
-        "Data": entries['Data:'].get(),
-        "CPF": entries['CPF:'].get(),
-        "RG": entries['RG:'].get(),
-        "Gênero": entries['Gênero:'].get(),
-        "Email": entries['Email:'].get(),
-        "Endereço completo": entries['Endereço completo:'].get(),
-        "Nome da empresa de trabalho": entries['Nome da empresa de trabalho:'].get(),
-        "Profissão": entries['Profissão:'].get(),
-        "Naturalidade": entries['Naturalidade:'].get(),
-        "Endereço da empresa de trabalho": entries['Endereço da empresa de trabalho:'].get(),
-        "Com qual valor mensal poderia colaborar?": entries['Com qual valor mensal poderia colaborar?:'].get(),
-        "Estado Civil": entries['Estado Civil:'].get()
+        "Matricula": entries['Matrícula'].get(),
+        "Celular": entries['Número de Celular'].get(),
+        "Número fixo": entries['Número fixo'].get(),
+        "Telefone da empresa de trabalho": entries['Telefone da empresa de trabalho'].get(),
+        "Cargo": entries['Cargo'].get(),
+        "Data de Nascimento": entries['Data de Nascimento'].get(),
+        "Data": entries['Data'].get(),
+        "CPF": entries['CPF'].get(),
+        "RG": entries['RG'].get(),
+        "Gênero": entries['Gênero'].get(),
+        "Email": entries['Email'].get(),
+        "Endereço completo": entries['Endereço completo'].get(),
+        "Nome da empresa de trabalho": entries['Nome da empresa de trabalho'].get(),
+        "Profissão": entries['Profissão'].get(),
+        "Naturalidade": entries['Naturalidade'].get(),
+        "Endereço da empresa de trabalho": entries['Endereço da empresa de trabalho'].get(),
+        "Com qual valor mensal poderia colaborar?": entries['Com qual valor mensal poderia colaborar?'].get(),
+        "Estado Civil": entries['Estado Civil'].get()
     }
     perfis[novo_nome] = novo_perfil
     listbox_nomes.insert(tk.END, novo_nome)
