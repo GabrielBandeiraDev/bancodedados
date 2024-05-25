@@ -1,9 +1,12 @@
 # importando dependencias do Tkinter
+import tkinter as tk
 from tkinter.ttk import *
 from tkinter import*
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog as fd
+from ttkthemes import ThemedTk
+
 
 # importando pillow
 from PIL import ImageTk, Image
@@ -24,6 +27,22 @@ co3 = "#00a095"  # Verde
 co4 = "#403d3d"   # letra
 co6 = "#003452"   # azul
 
+class Example(ThemedTk):
+    """
+    Example that is used to create screenshots for new themes.
+    """
+    def __init__(self, theme="aquativo"):
+        """
+        :param theme: Theme to show off
+        """
+        ThemedTk.__init__(self, fonts=True, themebg=True)
+        self.set_theme(theme)
+        # Create widgets
+        self.notebook = ttk.Notebook(self)
+        self.notebook.add(ttk.Button(self, text="Hello World"), text="Frame One")
+        self.notebook.add(ttk.Button(self, text="Hello Universe"), text="Frame Two")
+        self.menu = tk.Menu(self, tearoff=False)
+
 
 
 #janelas 
@@ -37,6 +56,8 @@ janela.resizable(width=FALSE, height=FALSE)
 # janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
 # janela.configure(background=co1)
 # janela.resizable(True, True)
+
+
 
 for i in range(5):
     janela.grid_columnconfigure(i, weight=1)
@@ -87,8 +108,8 @@ imagem  = Image.open('assets/logo.png')
 imagem = imagem.resize((130, 130))
 imagem = ImageTk.PhotoImage(imagem)
 
-l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-l_imagem.place(x=755, y=10)
+# l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
+# l_imagem.place(x=755, y=10)
 
 # ------------- funcoes para CRUD ---------------
 
@@ -491,90 +512,73 @@ def deletar():
 
 
 # criando campos de entrada
-# l_nome = Label(frame_detalhes, text="Nome *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_nome.place(x=4, y=10)
-# e_nome = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-# e_nome.place(x=7, y=40)
+l_nome = Label(frame_detalhes, text="NOME *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_nome.place(x=4, y=10)
+n_nome = ttk.Entry(frame_detalhes, width=122, justify='left')
+n_nome.place(x=7, y=35)
 
-# l_cpf = Label(frame_detalhes, text="CPF *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_cpf.place(x=260, y=10)
-# c_cpf = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-# c_cpf.place(x=260, y=40)
+l_cpf = Label(frame_detalhes, text="CPF *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_cpf.place(x=4, y=60)
+c_cpf = ttk.Entry(frame_detalhes, width=30, justify='left')
+c_cpf.place(x=7, y=84)
 
-# l_data_nascimento = Label(frame_detalhes, text="Data de nascimento *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_data_nascimento.place(x=515, y=10)
-# data_nascimento = DateEntry(frame_detalhes, width=18, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
-# data_nascimento.place(x=515, y=40)
+l_rg = Label(frame_detalhes, text="RG *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_rg.place(x=197, y=60)
+e_rg = ttk.Entry(frame_detalhes, width=30, justify='left')
+e_rg.place(x=200, y=84)
 
-# l_email = Label(frame_detalhes, text="Email *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_email.place(x=4, y=70)
-# e_email = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-# e_email.place(x=7, y=100)
+l_data_nascimento = Label(frame_detalhes, text="Data de nascimento *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_data_nascimento.place(x=393, y=60)
+d_data_nascimento = DateEntry(frame_detalhes, width=18, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
+d_data_nascimento.place(x=395, y=84)
 
-# l_endereco = Label(frame_detalhes, text="Endereço *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_endereco.place(x=260, y=70)
-# e_endereco = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-# e_endereco.place(x=260, y=100)
+l_sexo = Label(frame_detalhes, text="Sexo *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_sexo.place(x=678, y=60)
+s_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='center')
+s_sexo['values'] = ('M','F')
+s_sexo.place(x=680, y=85)
 
-# l_matricula = Label(frame_detalhes, text="Matricula *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_matricula.place(x=515, y=70)
-# e_matricula = Entry(frame_detalhes, width=18, justify='left', relief='solid')
-# e_matricula.place(x=515, y=100)
+l_telefone_fixo = Label(frame_detalhes, text="TELEFONE FIXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_fixo.place(x=4, y=109)
+t_telefone_fixo = ttk.Entry(frame_detalhes, width=30, justify='left')
+t_telefone_fixo.place(x=7, y=134)
 
-# l_tel = Label(frame_detalhes, text="Telefone *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_tel.place(x=4, y=130)
-# e_tel = Entry(frame_detalhes, width=15, justify='left', relief='solid')
-# e_tel.place(x=7, y=160)
+l_telefone_celular = Label(frame_detalhes, text="TELEFONE MÓVEL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_celular.place(x=197, y=109)
+e_telefone_celular = ttk.Entry(frame_detalhes, width=30, justify='left')
+e_telefone_celular.place(x=200, y=134)
 
+estado_civil_p = ['Solteiro','Casado','União estável']
+estado_civil = []
 
-# l_sexo = Label(frame_detalhes, text="Sexo *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-# l_sexo.place(x=262, y=130)
-# c_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='center')
-# c_sexo['values'] = ('M','F')
-# c_sexo.place(x=262, y=160)
-l_data_registro = Label(frame_detalhes, text="Nome *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_data_registro.place(x=4, y=10)
-d_data_registro = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-d_data_registro.place(x=7, y=40)
+for i in estado_civil_p:
+	estado_civil.append(i)
 
-l_email = Label(frame_detalhes, text="Cpf *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_email.place(x=208, y=10)
-e_mail = Entry(frame_detalhes, width=30, justify='left', relief='solid')
-e_mail.place(x=210, y=40)
-
-
-temperamentos_animais = ['Agressivo', 'Tímido', 'Passivo-agressivo', 'Sociável', 'Independente']
-temperamento = []
-
-for i in temperamentos_animais:
-	temperamento.append(i)
-
-l_temperamento = Label(frame_detalhes, text="Temperamento *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_temperamento.place(x=517, y=130)
-t_temperamento = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'))
-t_temperamento['values'] = (temperamento)
-t_temperamento.place(x=517, y=160)
-
+l_estado_civil = Label(frame_detalhes, text="ESTADO CIVIL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_estado_civil.place(x=530, y=60)
+e_estado_civil = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'))
+e_estado_civil['values'] = (estado_civil)
+e_estado_civil.place(x=532, y=85)
 
 # funcao para escolher imagem
 
-def escolher_imagem():
-	global imagem, imagem_string, l_imagem
+# def escolher_imagem():
+# 	global imagem, imagem_string, l_imagem
 
-	imagem = fd.askopenfilename()
-	imagem_string = imagem
+	# imagem = fd.askopenfilename()
+	# imagem_string = imagem
 
 	# abre a imagem
-	imagem = Image.open(imagem)
-	imagem = imagem.resize((130,130))
-	imagem = ImageTk.PhotoImage(imagem)
-	l_imagem = Label(frame_detalhes, image=imagem, bg=co1, fg=co4)
-	l_imagem.place(x=755, y=10)
+	# imagem = Image.open(imagem)
+	# imagem = imagem.resize((130,130))
+	# imagem = ImageTk.PhotoImage(imagem)
+	# l_imagem = Label(frame_detalhes, image=imagem, bg=co1, fg=co4)
+	# l_imagem.place(x=755, y=10)
 
-	botao_carregar['text'] = 'Trocar de foto'
+	# botao_carregar['text'] = 'Trocar de foto'
 
-botao_carregar = Button(frame_detalhes, command=escolher_imagem, text="Carregar Foto".upper(), width=20, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
-botao_carregar.place(x=755, y=160)
+# botao_carregar = Button(frame_detalhes, command=escolher_imagem, text="Carregar Foto".upper(), width=20, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
+# botao_carregar.place(x=755, y=160)
 
 
 # Tabela do banco apam
@@ -673,3 +677,7 @@ l_linha.place(x=265, y=0)
 mostrar_tabela()
 
 janela.mainloop()
+
+if __name__ == '__main__':
+    example = Example()
+    example.set_theme("adapta")
