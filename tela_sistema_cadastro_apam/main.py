@@ -26,33 +26,12 @@ co6 = "#003452"   # azul
 
 
 
-# janelas 
-# janela = Tk()
-# janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
-# janela.geometry('1200x600')
-# janela.configure(background=co1)
-# janela.resizable(width=FALSE, height=FALSE)
-
+#janelas 
 janela = Tk()
 janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
+janela.geometry('1200x600')
 janela.configure(background=co1)
-janela.resizable(True, True)
-
-for i in range(5):
-    janela.grid_columnconfigure(i, weight=1)
-    
-def maximize_window(event=None):
-    screen_width = janela.winfo_screenwidth()
-    screen_height = janela.winfo_screenheight()
-    window_width = janela.winfo_reqwidth()
-    window_height = janela.winfo_reqheight()
-    x = (screen_width // 10) - (window_width // 10)
-    y = (screen_height // 5) - (window_height // 5)
-    janela.geometry(f"{window_width}x{window_height}+{x}+{y}")
-    
-
-janela.bind("<Configure>", maximize_window)
-
+janela.resizable(width=FALSE, height=FALSE)
 
 
 style = Style(janela)
