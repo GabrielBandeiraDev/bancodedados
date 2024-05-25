@@ -156,65 +156,65 @@ def adicionar():
     #     messagebox.showerror('Erro', 'Sexo inválido')
     #     return
     if not Validacao.validarNome(data_registro):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(email):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(name):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(cpf):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(rg):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(data_nascimento):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(sexo):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(naturalidade):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(estado_civil):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(endereco):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(telefone_fixo):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(nome_empresa):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(nome_empresa):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(endereco_empresa):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(telefone_empresa):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(profissao):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(valor_colaborar):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(em_que_pode_ajudar_apam):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(outras_formas_de_ajudar_apam):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     if not Validacao.validarNome(expectativa_trabalho_volutario):
-         messagebox.showerror('Erro', 'Nome inválido')
-         return
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     
    
     apam = (data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario)
@@ -536,6 +536,11 @@ l_data_registro = Label(frame_detalhes, text="Nome *", height=1, anchor=NW, font
 l_data_registro.place(x=4, y=10)
 d_data_registro = Entry(frame_detalhes, width=30, justify='left', relief='solid')
 d_data_registro.place(x=7, y=40)
+
+l_email = Label(frame_detalhes, text="Cpf *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_email.place(x=208, y=10)
+e_mail = Entry(frame_detalhes, width=30, justify='left', relief='solid')
+e_mail.place(x=210, y=40)
 
 
 temperamentos_animais = ['Agressivo', 'Tímido', 'Passivo-agressivo', 'Sociável', 'Independente']
