@@ -84,13 +84,13 @@ style.theme_use("clam")
 frame_logo = Frame(janela, width=1200, height=70, bg=co6)
 frame_logo.grid(row=0, column=0, pady=0, padx=0, sticky=NSEW, columnspan=5)
 
-frame_botoes = Frame(janela, width=100, height=100, bg=co1, relief=RAISED)
-frame_botoes.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
+frame_botoes = Frame(janela, width=150, height=100, bg=co1, relief=RAISED)
+frame_botoes.grid(row=1, column=0, pady=10, padx=10, sticky=NSEW)
 
-frame_detalhes = Frame(janela, width=1200, height=450, bg=co1, relief=SOLID)
+frame_detalhes = Frame(janela, width=885, height=460, bg=co1, relief=SOLID)
 frame_detalhes.grid(row=1, column=1, pady=0, padx=0, sticky=NSEW)
 
-frame_tabela = Frame(janela, width=1200, height=1200, bg=co1)
+frame_tabela = Frame(janela, width=885, height=1200, bg=co1)
 frame_tabela.grid(row=3, column=0, pady=10, padx=10, sticky=NSEW, columnspan=5)
 
 
@@ -106,11 +106,12 @@ app_logo.place(x=5, y=0)
 
 # abrindo a imagem
 imagem  = Image.open('assets/logo.png')
-imagem = imagem.resize((130, 130))
+imagem = imagem.resize((110, 110))
 imagem = ImageTk.PhotoImage(imagem)
 
 l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-l_imagem.place(x=900, y=10)
+l_imagem.place(x=5, y=343)
+
 
 # ------------- funcoes para CRUD ---------------
 
@@ -314,7 +315,7 @@ def procurar():
 	imagem = ImageTk.PhotoImage(imagem)
 
 	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=755, y=10)
+	l_imagem.place(x=5, y=343)
 
 
 
@@ -384,7 +385,7 @@ def atualizar():
 	imagem = ImageTk.PhotoImage(imagem)
 
 	i_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=755, y=10)
+	l_imagem.place(x=5, y=343)
 
 	# mostrando os valores na Tabela
 	mostrar_tabela()
@@ -429,32 +430,31 @@ def deletar():
 	imagem = ImageTk.PhotoImage(imagem)
 
 	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=755, y=10)
+	l_imagem.place(x=5, y=343)
 
 	# mostrando os valores na Tabela
 	mostrar_tabela()
 
 
-# criando campos de entrada
 l_nome = Label(frame_detalhes, text="NOME *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_nome.place(x=4, y=10)
 n_nome = ttk.Entry(frame_detalhes, width=100, justify='left')
-n_nome.place(x=7, y=35)
+n_nome.place(x=4, y=35)
 
 l_cpf = Label(frame_detalhes, text="CPF *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_cpf.place(x=4, y=60)
 c_cpf = ttk.Entry(frame_detalhes, width=20, justify='left')
-c_cpf.place(x=7, y=84)
+c_cpf.place(x=4, y=84)
 
 l_rg = Label(frame_detalhes, text="RG *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_rg.place(x=197, y=60)
 r_rg = ttk.Entry(frame_detalhes, width=20, justify='left')
-r_rg.place(x=200, y=84)
+r_rg.place(x=197, y=84)
 
 l_data_nascimento = Label(frame_detalhes, text="DATA NASC. *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_nascimento.place(x=393, y=60)
 d_data_nascimento = DateEntry(frame_detalhes, width=15, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
-d_data_nascimento.place(x=395, y=84)
+d_data_nascimento.place(x=393, y=84)
 
 l_sexo = Label(frame_detalhes, text="SEXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_sexo.place(x=745, y=60)
@@ -465,12 +465,12 @@ s_sexo.place(x=745, y=85)
 l_telefone_fixo = Label(frame_detalhes, text="TELEFONE FIXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_fixo.place(x=4, y=109)
 t_telefone_fixo = ttk.Entry(frame_detalhes, width=20, justify='left')
-t_telefone_fixo.place(x=7, y=134)
+t_telefone_fixo.place(x=4, y=134)
 
 l_telefone_celular = Label(frame_detalhes, text="TELEFONE MÓVEL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_celular.place(x=197, y=109)
 t_telefone_celular = ttk.Entry(frame_detalhes, width=20, justify='left')
-t_telefone_celular.place(x=200, y=134)
+t_telefone_celular.place(x=197, y=134)
 
 l_naturalidade = Label(frame_detalhes, text="NATURALIDADE *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_naturalidade.place(x=665, y=109)
@@ -480,29 +480,29 @@ n_naturalidade.place(x=665, y=134)
 l_email = Label(frame_detalhes, text="EMAIL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_email.place(x=393, y=109)
 e_email = ttk.Entry(frame_detalhes, width=30, justify='left')
-e_email.place(x=395, y=134)
+e_email.place(x=393, y=134)
 
 l_endereco = Label(frame_detalhes, text="ENDEREÇO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_endereco.place(x=4, y=159)
 e_endereco = ttk.Entry(frame_detalhes, width=44, justify='left')
-e_endereco.place(x=7, y=184)
+e_endereco.place(x=4, y=184)
 
 # profissao
 l_profissao = Label(frame_detalhes, text="PROFISSÃO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_profissao.place(x=393, y=159)
 p_profissao = ttk.Entry(frame_detalhes, width=30, justify='left')
-p_profissao.place(x=395, y=184)
+p_profissao.place(x=393, y=184)
 
 #nome da empresa
 l_nome_empresa = Label(frame_detalhes, text="NOME DA EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_nome_empresa.place(x=4, y=209)
 n_nome_empresa = ttk.Entry(frame_detalhes, width=44, justify='left')
-n_nome_empresa.place(x=7, y=234)
+n_nome_empresa.place(x=4, y=234)
 
 l_endereco_empresa = Label(frame_detalhes, text="ENDEREÇO DA EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_endereco_empresa.place(x=393, y=209)
 e_endereco_empresa = ttk.Entry(frame_detalhes, width=30, justify='left')
-e_endereco_empresa.place(x=395, y=234)
+e_endereco_empresa.place(x=393, y=234)
 
 #telefone da empresa ao lado do endereco da empresa mesmo eixo naturalidade
 l_telefone_empresa = Label(frame_detalhes, text="TELEFONE EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -519,12 +519,12 @@ d_data_registro.place(x=665, y=184)
 l_em_que_pode_ajudar_apam = Label(frame_detalhes, text="EM QUE PODE AJUDAR APAM *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_em_que_pode_ajudar_apam.place(x=4, y=259)
 e_em_que_pode_ajudar_apam = scrolledtext.ScrolledText(frame_detalhes, width=48, height=3, wrap=WORD)
-e_em_que_pode_ajudar_apam.place(x=7, y=284)
+e_em_que_pode_ajudar_apam.place(x=4, y=284)
 
 l_outras_formas_de_ajudar_apam = Label(frame_detalhes, text="OUTRAS FORMAS DE AJUDAR APAM *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_outras_formas_de_ajudar_apam.place(x=4, y=345)
-o_outras_formas_de_ajudar_apam = scrolledtext.ScrolledText(frame_detalhes, width=48, height=3, wrap=WORD)
-o_outras_formas_de_ajudar_apam.place(x=7, y=368)
+l_outras_formas_de_ajudar_apam.place(x=430, y=345)
+o_outras_formas_de_ajudar_apam = scrolledtext.ScrolledText(frame_detalhes, width=46, height=3, wrap=WORD)
+o_outras_formas_de_ajudar_apam.place(x=430, y=368)
 
 l_expectativa_trabalho_volutario = Label(frame_detalhes, text="EXPECTATIVA TRABALHO VOLUNTÁRIO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_expectativa_trabalho_volutario.place(x=430, y=259)
@@ -532,9 +532,13 @@ e_expectativa_trabalho_volutario = scrolledtext.ScrolledText(frame_detalhes, wid
 e_expectativa_trabalho_volutario.place(x=430, y=284)
 
 l_valor_colaborar = Label(frame_detalhes, text="VALOR COLABORAR *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
-l_valor_colaborar.place(x=430, y=345)
+l_valor_colaborar.place(x=234, y=345)
 v_valor_colaborar = ttk.Entry(frame_detalhes, width=20, justify='left')
-v_valor_colaborar.place(x=430, y=368)
+v_valor_colaborar.place(x=234, y=368)
+
+# Definindo o widget de entrada i_imagem
+# i_imagem = ttk.Entry(frame_detalhes, width=30, justify='left')
+# i_imagem.place(x=665, y=234)  # Ajuste as coordenadas conforme necessário
 
 estado_civil_p = ['Solteiro','Casado','União estável']
 estado_civil = []
@@ -546,27 +550,27 @@ l_estado_civil = Label(frame_detalhes, text="ESTADO CIVIL *", height=1, anchor=N
 l_estado_civil.place(x=558, y=60)
 e_estado_civil = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'))
 e_estado_civil['values'] = (estado_civil)
-e_estado_civil.place(x=560, y=85)
+e_estado_civil.place(x=558, y=85)
 
 #funcao para escolher imagem
 
 def escolher_imagem():
 	global imagem, imagem_string, l_imagem
-
+ 
 	imagem = fd.askopenfilename()
 	imagem_string = imagem
 
 	#abre a imagem
 	imagem = Image.open(imagem)
-	imagem = imagem.resize((130,130))
+	imagem = imagem.resize((110,110))
 	imagem = ImageTk.PhotoImage(imagem)
 	l_imagem = Label(frame_detalhes, image=imagem, bg=co1, fg=co4)
-	l_imagem.place(x=900, y=10)
+	l_imagem.place(x=4, y=343)
 
 	botao_carregar['text'] = 'Trocar de foto'
 
-botao_carregar = Button(frame_detalhes, command=escolher_imagem, text="Carregar Foto".upper(), width=20, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
-botao_carregar.place(x=900, y=184)
+botao_carregar = Button(frame_detalhes, command=escolher_imagem, text="Carregar Foto".upper(), width=12, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
+botao_carregar.place(x=124, y=368)
 
 
 # Tabela do banco apam
