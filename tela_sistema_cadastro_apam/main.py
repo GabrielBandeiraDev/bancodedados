@@ -6,6 +6,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog as fd
 from ttkthemes import ThemedTk
+from tkinter import scrolledtext
 
 
 # importando pillow
@@ -527,12 +528,12 @@ l_rg.place(x=197, y=60)
 e_rg = ttk.Entry(frame_detalhes, width=30, justify='left')
 e_rg.place(x=200, y=84)
 
-l_data_nascimento = Label(frame_detalhes, text="Data de nascimento *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_data_nascimento = Label(frame_detalhes, text="DATA NASC. *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_nascimento.place(x=393, y=60)
 d_data_nascimento = DateEntry(frame_detalhes, width=18, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
 d_data_nascimento.place(x=395, y=84)
 
-l_sexo = Label(frame_detalhes, text="Sexo *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_sexo = Label(frame_detalhes, text="SEXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_sexo.place(x=678, y=60)
 s_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='center')
 s_sexo['values'] = ('M','F')
@@ -586,12 +587,15 @@ def mostrar_tabela():
 
 	# area do scrollbars
 	#list_header = ['id','Nome','email',  'Telefone','sexo','Data', 'Endereço','temperamento']
-	list_header = ['id', 'Nome', 'CPF', 'Matricula', 'Email', 'Telefone','Sexo','Data Nascimento', 'Endereço', 'Temperamento']
-
+	#list_header = ['id', 'Nome', 'CPF', 'Matricula', 'Email', 'Telefone','Sexo','Data Nascimento', 'Endereço', 'Temperamento']
+	list_header = ['id','data_registro', 'email', 'name', 'cpf', 'rg', 'data_nascimento', 'sexo', 'naturalidade', 'estado_civil',
+    'endereço', 'telefone_fixo', 'telefone_celular', 'nome_empresa', 'endereco_empresa', 'telefone_empresa', 'profissao',
+    'valor_colaborar', 'em_que_pode_ajudar_apam', 'outras_formas_de_ajudar_apam', 'expectativa_trabalho_volutario']
+ 
 	# visualiza as informações do banco apam
 	df_list = registration_system.view_all_bancoapam()
 
-	global tree_temperamento
+	global tree_estado_civil
 
 	tree_apam = ttk.Treeview(frame_tabela, selectmode="extended",columns=list_header, show="headings")
 
@@ -604,10 +608,10 @@ def mostrar_tabela():
 	tree_apam.grid(column=0, row=1, sticky='nsew')
 	vsb.grid(column=1, row=1, sticky='ns')
 	hsb.grid(column=0, row=2, sticky='ew')
-	frame_tabela.grid_rowconfigure(0, weight=12)
+	frame_tabela.grid_columnconfigure(0, weight=1)
 
-	hd=["center","nw","center","center","center","center","center","center","nw","center"]
-	h=[116,116,116,116,116,116,60,152,116,136]
+	hd=["center","nw","center","center","center","center","center","center","nw","center","center","nw","center","center","center","center","center","center","center","center","center"]
+	h=[116,116,116,116,116,116,60,152,116,136,116,116,116,116,116,116,60,152,116,60,152]
 	n=0
 
 	for col in list_header:
@@ -677,7 +681,3 @@ l_linha.place(x=265, y=0)
 mostrar_tabela()
 
 janela.mainloop()
-
-if __name__ == '__main__':
-    example = Example()
-    example.set_theme("adapta")
