@@ -1,4 +1,11 @@
+# Ideia: Colocar o campo do lado do botão
+#   campo -> botão
+#   campo data -> botão selecionar data
+#   campo endereço -> botão selecionar endereço com google map
+
+
 import flet as ft
+import datetime
 from banco import *
 from util import *
 
@@ -13,7 +20,7 @@ def main(page: ft.Page):
             rg.error_text = "Preencha o Campo RG Adequadamente"
         page.update()
 
-    
+
     page.title = "SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)"
     # page.bgcolor = '#feffff'
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
@@ -93,25 +100,46 @@ def main(page: ft.Page):
             ft.dropdown.Option('F'),
             ft.dropdown.Option('Prefiro Não Responder')
         ])
-    # Pesq como trabalhar com datas no flet
-    data = ft.TextField(
-        label='Data',
+    # Criar date_picker_nasc
+    date_picker = ft.DatePicker(
+        first_date=datetime.datetime(2023, 10, 1),
+        last_date=datetime.datetime(2024, 10, 1),
+    )
+    data_field = ft.TextField(
+        hint_text='Data',
+        read_only=True,
         focused_border_color=ft.colors.BLACK,
         value='',
-        width=300,
+        width=240,
         text_align=ft.TextAlign.CENTER,
         color=ft.colors.WHITE,
         border_radius=10
         )
-    data_nasc = ft.TextField(
-        label='Data de Nascimento',
+    data_bnt = ft.IconButton(
+        icon=ft.icons.CALENDAR_MONTH,
+        icon_color=ft.colors.WHITE,
+        height=50,
+        width=50,
+        on_click=lambda _: date_picker.pick_date()  # Criar uma função
+        )
+    data_nasc_field = ft.TextField(
+        hint_text='Data de Nascimento',
+        read_only=True,
         focused_border_color=ft.colors.BLACK,
         value='',
-        width=300,
+        width=240,
         text_align=ft.TextAlign.CENTER,
         color=ft.colors.WHITE,
         border_radius=10
         )
+    data_nasc_bnt = ft.IconButton(
+        icon=ft.icons.CALENDAR_MONTH,
+        icon_color=ft.colors.WHITE,
+        height=50,
+        width=50,
+        on_click=lambda _: date_picker.pick_date()
+        )
+    page.overlay.append(date_picker)
     naturalidade = ft.Dropdown(
         label='Naturalidade',
         focused_border_color=ft.colors.BLACK,
@@ -150,13 +178,21 @@ def main(page: ft.Page):
     ])
     # Botão para escolher no mapa, google maps API
     endereco = ft.TextField(
-        label='Endereço',
+        hint_text='Endereço',
+        read_only=True,
         focused_border_color=ft.colors.BLACK,
         value='',
-        width=300,
+        width=240,
         text_align=ft.TextAlign.CENTER,
         color=ft.colors.WHITE,
-        border_radius=10)
+        border_radius=10
+        )
+    endereco_bnt = ft.IconButton(
+        icon=ft.icons.MAP,
+        height=50,
+        width=50,
+        icon_color=ft.colors.WHITE
+    )
     valor_colaborar = ft.TextField(
         label='Com Qual Valor Pode Colaborar',
         focused_border_color=ft.colors.BLACK,
@@ -167,7 +203,7 @@ def main(page: ft.Page):
         border_radius=10
         )
     empresa_trabalha = ft.TextField(
-        label='Nome da Empresa em que Trabalha',
+        hint_text='Nome da Empresa em que Trabalha',
         focused_border_color=ft.colors.BLACK,
         value='',
         width=300,
@@ -177,13 +213,20 @@ def main(page: ft.Page):
         )
     endereco_empresa_trabalha = ft.TextField(
         label='Endereço Empresa em que Trabalha',
+        read_only=True,
         focused_border_color=ft.colors.BLACK,
         value='',
-        width=300,
+        width=240,
         text_align=ft.TextAlign.CENTER,
         color=ft.colors.WHITE,
         border_radius=10
         )
+    endereco_empresa_trabalha_bnt = ft.IconButton(
+        icon=ft.icons.MAP,
+        height=50,
+        width=50,
+        icon_color=ft.colors.WHITE
+    )
     profisao = ft.TextField(
         label='Profissão',
         focused_border_color=ft.colors.BLACK,
@@ -252,17 +295,21 @@ def main(page: ft.Page):
                 alignment=ft.MainAxisAlignment.CENTER),
             ft.Row(
                 [sexo,
-                 data,
-                 data_nasc],
+                 data_field,
+                 data_bnt,
+                 data_nasc_field,
+                 data_nasc_bnt],
                 alignment=ft.MainAxisAlignment.CENTER),
             ft.Row(
                 [naturalidade,
                  endereco,
+                 endereco_bnt,
                  valor_colaborar], 
                 alignment=ft.MainAxisAlignment.CENTER),
             ft.Row(
                 [empresa_trabalha,
                  endereco_empresa_trabalha,
+                 endereco_empresa_trabalha_bnt,
                  profisao], 
                 alignment=ft.MainAxisAlignment.CENTER),
             
