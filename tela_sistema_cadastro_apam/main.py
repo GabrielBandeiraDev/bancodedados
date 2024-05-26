@@ -25,12 +25,14 @@ co4 = "#403d3d"   # letra
 co6 = "#003452"   # azul
 
 
-# janelas 
+
+#janelas 
 janela = Tk()
 janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
 janela.geometry('1200x900')
 janela.configure(background=co1)
 janela.resizable(width=FALSE, height=FALSE)
+
 
 style = Style(janela)
 style.theme_use("clam")
@@ -52,7 +54,7 @@ frame_tabela.grid(row=2, column=0, pady=300, padx=10, sticky=NSEW, columnspan=5)
 # frame Logo
 global imagem, imagem_string, l_imagem
 
-app_lg = Image.open('C:/Users/Lury/Desktop/EDLANE_UTILS/bancodedados/assets/logo.png')
+app_lg = Image.open('assets/logo.png')
 app_lg = app_lg.resize((65,65))
 app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grossense Protetora dos Animais", width=1200, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1, padx=20)
@@ -60,7 +62,7 @@ app_logo.place(x=5, y=0)
 
 
 # abrindo a imagem
-imagem  = Image.open('C:/Users/Lury/Desktop/EDLANE_UTILS/bancodedados/assets/logo.png')
+imagem  = Image.open('assets/logo.png')
 imagem = imagem.resize((130, 130))
 imagem = ImageTk.PhotoImage(imagem)
 
@@ -420,19 +422,19 @@ botao_procurar.grid(row=1, column=1, pady=10, padx=0, sticky=NSEW)
 
 # Botoes
 
-app_img_adicionar = Image.open('C:/Users/Lury/Desktop/EDLANE_UTILS/bancodedados/assets/add.png')
+app_img_adicionar = Image.open('assets/add.png')
 app_img_adicionar = app_img_adicionar.resize((25,25))
 app_img_adicionar = ImageTk.PhotoImage(app_img_adicionar)
 app_adicionar = Button(frame_botoes, command=adicionar, image=app_img_adicionar, text=" Adicionar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_adicionar.grid(row=1, column=0, pady=5, padx=10, sticky=NSEW)
 
-app_img_atualizar = Image.open('C:/Users/Lury/Desktop/EDLANE_UTILS/bancodedados/assets/update.png')
+app_img_atualizar = Image.open('assets/update.png')
 app_img_atualizar = app_img_atualizar.resize((25,25))
 app_img_atualizar = ImageTk.PhotoImage(app_img_atualizar)
 app_atualizar = Button(frame_botoes,command=atualizar, image=app_img_atualizar, text=" Atualizar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_atualizar.grid(row=2, column=0, pady=5, padx=10, sticky=NSEW)
 
-app_img_deletar = Image.open('C:/Users/Lury/Desktop/EDLANE_UTILS/bancodedados/assets/delete.png')
+app_img_deletar = Image.open('assets/delete.png')
 app_img_deletar = app_img_deletar.resize((25,25))
 app_img_deletar = ImageTk.PhotoImage(app_img_deletar)
 app_deletar = Button(frame_botoes, command=deletar, image=app_img_deletar, text=" Deletar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
