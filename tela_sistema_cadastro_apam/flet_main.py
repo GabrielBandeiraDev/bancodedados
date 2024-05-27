@@ -47,7 +47,7 @@ def main(page: ft.Page):
 
         def close_dlg_yes(e):
             dlg_modal.open = False
-            page.snack_bar = ft.SnackBar(ft.Text(f"Hello {d.counter}"))
+            page.snack_bar = ft.SnackBar(ft.Text("Cadastro Realizado com Sucesso"))
             page.snack_bar.open = True
             page.update()
      
@@ -56,8 +56,8 @@ def main(page: ft.Page):
             title=ft.Text("Por Favor Confirme"),
             content=ft.Text("Não Nenhum Erro nos Cadastro?"),
             actions=[
-                ft.TextButton("Não", on_click=close_dlg),
-                ft.TextButton("Sim", on_click=close_dlg),
+                ft.TextButton("Não", on_click=close_dlg_no),
+                ft.TextButton("Sim", on_click=close_dlg_yes),
             ],
             actions_alignment=ft.MainAxisAlignment.END
         )
