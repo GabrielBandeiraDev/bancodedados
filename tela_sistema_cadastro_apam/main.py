@@ -53,13 +53,6 @@ janela.geometry('1200x800')
 janela.configure(background=co1)
 janela.resizable(width=FALSE, height=FALSE)
 
-# janela = Tk()
-# janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
-# janela.configure(background=co1)
-# janela.resizable(True, True)
-
-
-
 for i in range(5):
     janela.grid_columnconfigure(i, weight=1)
     
@@ -492,13 +485,11 @@ l_endereco.place(x=4, y=159)
 e_endereco = ttk.Entry(frame_detalhes, width=44, justify='left')
 e_endereco.place(x=4, y=184)
 
-# profissao
 l_profissao = Label(frame_detalhes, text="PROFISSÃO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_profissao.place(x=393, y=159)
 p_profissao = ttk.Entry(frame_detalhes, width=30, justify='left')
 p_profissao.place(x=393, y=184)
 
-#nome da empresa
 l_nome_empresa = Label(frame_detalhes, text="NOME DA EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_nome_empresa.place(x=4, y=209)
 n_nome_empresa = ttk.Entry(frame_detalhes, width=44, justify='left')
@@ -509,13 +500,11 @@ l_endereco_empresa.place(x=393, y=209)
 e_endereco_empresa = ttk.Entry(frame_detalhes, width=30, justify='left')
 e_endereco_empresa.place(x=393, y=234)
 
-#telefone da empresa ao lado do endereco da empresa mesmo eixo naturalidade
 l_telefone_empresa = Label(frame_detalhes, text="TELEFONE EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_empresa.place(x=665, y=209)
 t_telefone_empresa = ttk.Entry(frame_detalhes, width=18, justify='left')
 t_telefone_empresa.place(x=665, y=234)
 
-#data registro, na mesma linha da profissao no mesmo eixo da naturalidade
 l_data_registro = Label(frame_detalhes, text="DATA REGISTRO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_registro.place(x=665, y=159)
 d_data_registro = DateEntry(frame_detalhes, width=16, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
@@ -543,7 +532,7 @@ v_valor_colaborar.place(x=234, y=368)
 
 # Definindo o widget de entrada i_imagem
 i_imagem = ttk.Entry(frame_detalhes, width=30, justify='left')
-i_imagem.place(x=665, y=234)  # Ajuste as coordenadas conforme necessário
+i_imagem.place(x=665, y=234)
 
 estado_civil_p = ['Solteiro','Casado','União estável']
 estado_civil = []
