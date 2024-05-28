@@ -22,27 +22,27 @@ class RegistrationSystem:
     def create_tables(self):
         self.c.execute('''CREATE TABLE IF NOT EXISTS bancoapam
                             (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            data_registro DATE NOT NULL,
-                            email TEXT NOT NULL,
-                            name TEXT NOT NULL,
+                            nome_empresa TEXT,
                             cpf TEXT,
                             rg TEXT NOT NULL,
                             data_nascimento DATE NOT NULL,
-                            sexo TEXT NOT NULL,
-                            naturaliade TEXT NOT NULL,
                             estado_civil TEXT NOT NULL,
+                            data_registro DATE NOT NULL,
+                            sexo TEXT NOT NULL,
+                            email TEXT NOT NULL,
+                            naturaliade TEXT NOT NULL,
                             endereco TEXT NOT NULL,
-                            telefone_fixo TEXT,
                             telefone_celular TEXT NOT NULL,
-                            nome_empresa TEXT,
-                            endereco_empresa TEXT NOT NULL,
-                            telefone_empresa TEXT,
                             profissao TEXT NOT NULL,
-                            valor_colaborar REAL NOT NULL,
+                            endereco_empresa TEXT NOT NULL,
+                            telefone_empresa TEXT,  
                             em_que_pode_ajuar_apam TEXT NOT NULL,
                             outras_formas_de_ajudar_apam TEXT NOT NULL,
-                            expectativa_trabalho_voluntario TEXT NOT NULL,
-                            imagem TEXT NOT NULL)''')
+                            telefone_empresa TEXT,                                         
+                            
+                            
+                            
+                        '')
         self.conn.commit()
 
     def register_apam(self, values_table: list, table: str='bancoapam'):

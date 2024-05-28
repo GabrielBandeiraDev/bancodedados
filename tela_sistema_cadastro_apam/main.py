@@ -116,7 +116,7 @@ l_imagem.place(x=5, y=343)
 # ------------- funcoes para CRUD ---------------
 
 def adicionar():
-    global imagem_string
+    global imagem, imagem_string, l_imagem
     
     data_registro = d_data_registro.get()
     email = e_email.get()
@@ -138,7 +138,7 @@ def adicionar():
     em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
     outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
     expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
-    imagem = i_imagem.get()
+    imagem = imagem_string
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem]
     
     for i in lista:
@@ -147,88 +147,87 @@ def adicionar():
             return
 
     
-    # if not Validacao.validarNome(nome):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarCPF(cpf):
-    #     messagebox.showerror('Erro', 'CPF inválido')
-    #     return
-    # if not Validacao.validarEmail(email):
-    #     messagebox.showerror('Erro', 'Email inválido')
-    #     return
-    # if not Validacao.validarCEP(endereco):
-    #     messagebox.showerror('Erro', 'CEP inválido')
-    #     return
-    # if not Validacao.validarTelefone_e_Celular(tel):
-    #     messagebox.showerror('Erro', 'Telefone/Celular inválido')
-    #     return
-    # if not Validacao.validarSexo(sexo):
-    #     messagebox.showerror('Erro', 'Sexo inválido')
-    #     return
-    # if not Validacao.validarNome(data_registro):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(email):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(name):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(cpf):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(rg):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(data_nascimento):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(sexo):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(naturalidade):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(estado_civil):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(endereco):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(telefone_fixo):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(nome_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(nome_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(endereco_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(telefone_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(profissao):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(valor_colaborar):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(em_que_pode_ajudar_apam):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(outras_formas_de_ajudar_apam):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(expectativa_trabalho_volutario):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
+
+    if not Validacao.validarCPF(cpf):
+        messagebox.showerror('Erro', 'CPF inválido')
+        return
+    if not Validacao.validarEmail(email):
+        messagebox.showerror('Erro', 'Email inválido')
+        return
+    if not Validacao.validarCEP(endereco):
+        messagebox.showerror('Erro', 'CEP inválido')
+        return
+    if not Validacao.validarTelefone_e_Celular(l_telefone_celular):
+        messagebox.showerror('Erro', 'Telefone/Celular inválido')
+        return
+    if not Validacao.validarSexo(sexo):
+        messagebox.showerror('Erro', 'Sexo inválido')
+        return
+    if not Validacao.validarNome(data_registro):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(email):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(name):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(cpf):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(rg):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(data_nascimento):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(sexo):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(naturalidade):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(estado_civil):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(endereco):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(telefone_fixo):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(nome_empresa):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(nome_empresa):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(endereco_empresa):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(telefone_empresa):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(profissao):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(valor_colaborar):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(em_que_pode_ajudar_apam):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(outras_formas_de_ajudar_apam):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarNome(expectativa_trabalho_volutario):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
     
    
-    apam = (data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario)
-    registration_system.register_apam(apam)
+    # apam = (data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario)
+    # registration_system.register_apam(apam)
+    registration_system.register_apam(lista)
 	
     d_data_registro(0, END)
     e_email(0, END)
@@ -254,14 +253,17 @@ def adicionar():
     mostrar_tabela()
 
 
+# funcao procurar
 def procurar():
 	global imagem, imagem_string, l_imagem
 
-	
+	# obtendo o id
 	id_apam = int(e_procurar.get())
 
+	# procura o ID do apam
 	dados = registration_system.search_apam(id_apam)
 
+	# limpando os campos de entradas
 	d_data_registro.delete(0, END)
 	e_email.delete(0, END)
 	n_nome.delete(0, END)
@@ -283,7 +285,7 @@ def procurar():
 	o_outras_formas_de_ajudar_apam.delete(0, END)
 	e_expectativa_trabalho_volutario.delete(0, END)
 
-	
+	# inser os valores
 	d_data_registro.insert(END,dados[1])
 	e_email.insert(END,dados[2])
 	n_nome.insert(END,dados[3])
@@ -324,6 +326,8 @@ def atualizar():
 
 	# obtendo o id
 	id_apam = int(e_procurar.get())
+ 
+ 	# obtendo os valores
 	data_registro = d_data_registro.get()
 	email = e_email.get()
 	name = n_nome.get()
@@ -344,8 +348,7 @@ def atualizar():
 	em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get()
 	outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get()
 	expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get()
-
-	imagem = i_imagem.get()
+	imagem = i_imagem.string
 
 	# lista = [nome, cpf, data, email, endereco, matricula, tel, sexo, temperamento, img, id_apam]
 	lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem, id_apam]
@@ -358,6 +361,8 @@ def atualizar():
 
 	# atualizar cadastro do apam
 	registration_system.update_apam(lista)
+ 
+ 	# limpando os campos de entradas
 	d_data_registro.delete(0, END)
 	e_email.delete(0, END)
 	n_nome.delete(0, END)
@@ -384,7 +389,7 @@ def atualizar():
 	imagem = imagem.resize((130, 130))
 	imagem = ImageTk.PhotoImage(imagem)
 
-	i_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
+	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
 	l_imagem.place(x=5, y=343)
 
 	# mostrando os valores na Tabela
@@ -399,7 +404,7 @@ def deletar():
 	# obtendo o id
 	id_apam = int(e_procurar.get())
 
-	# deleta o ID do apam
+	# limpando os campos de entradas
 	registration_system.delete_apam(id_apam)
 	d_data_registro.delete(0, END)
 	e_email.delete(0, END)
@@ -537,8 +542,8 @@ v_valor_colaborar = ttk.Entry(frame_detalhes, width=20, justify='left')
 v_valor_colaborar.place(x=234, y=368)
 
 # Definindo o widget de entrada i_imagem
-# i_imagem = ttk.Entry(frame_detalhes, width=30, justify='left')
-# i_imagem.place(x=665, y=234)  # Ajuste as coordenadas conforme necessário
+i_imagem = ttk.Entry(frame_detalhes, width=30, justify='left')
+i_imagem.place(x=665, y=234)  # Ajuste as coordenadas conforme necessário
 
 estado_civil_p = ['Solteiro','Casado','União estável']
 estado_civil = []
@@ -597,7 +602,7 @@ def mostrar_tabela():
 	tree_apam.grid(column=0, row=1, sticky='nsew')
 	vsb.grid(column=1, row=1, sticky='ns')
 	hsb.grid(column=0, row=2, sticky='ew')
-	frame_tabela.grid_columnconfigure(0, weight=1)
+	frame_tabela.grid_columnconfigure(0, weight=12)
 
 	hd=["center","nw","center","center","center","center","center","center","nw","center","center","nw","center","center","center","center","center","center","center","center","center"]
 	h=[116,116,116,116,116,116,60,152,116,136,116,116,116,116,116,116,60,152,116,60,152]
