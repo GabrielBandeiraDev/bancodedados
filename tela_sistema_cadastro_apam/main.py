@@ -45,7 +45,6 @@ class Example(ThemedTk):
         self.menu = tk.Menu(self, tearoff=False)
 
 
-
 #janelas 
 janela = Tk()
 janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
