@@ -279,7 +279,7 @@ def procurar():
 	n_nome_empresa.delete(0, END)
 	e_endereco_empresa.delete(0, END)
 	t_telefone_empresa.delete(0, END)
-	p_profissao.delete.delete(0, END)
+	p_profissao.delete(0, END)
 	v_valor_colaborar.delete(0, END)
 	e_em_que_pode_ajudar_apam.delete(0, END)
 	o_outras_formas_de_ajudar_apam.delete(0, END)
@@ -301,7 +301,7 @@ def procurar():
 	n_nome_empresa.insert(END,dados[13])
 	e_endereco_empresa.insert(END,dados[14])
 	t_telefone_empresa.insert(END,dados[15])
-	p_profissao.delete.insert(END,dados[16])
+	p_profissao.insert(END,dados[16])
 	v_valor_colaborar.insert(END,dados[17])
 	e_em_que_pode_ajudar_apam.insert(END,dados[18])
 	o_outras_formas_de_ajudar_apam.insert(END,dados[19])
@@ -345,12 +345,12 @@ def atualizar():
 	telefone_empresa = t_telefone_empresa.get()
 	profissao = p_profissao.get()
 	valor_colaborar = v_valor_colaborar.get()
-	em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get()
-	outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get()
-	expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get()
-	imagem = i_imagem.string
+	em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
+	outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
+	expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
+	imagem = i_imagem_string
 
-	# lista = [nome, cpf, data, email, endereco, matricula, tel, sexo, temperamento, img, id_apam]
+	
 	lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem, id_apam]
 
 	# Verificando caso algum campo esteja vazio ou nao
