@@ -22,21 +22,23 @@ class RegistrationSystem:
     def create_tables(self):
         self.c.execute('''CREATE TABLE IF NOT EXISTS bancoapam
                             (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            data_registro DATE NOT NULL,
+                            email TEXT NOT NULL,
                             name TEXT NOT NULL,
                             cpf TEXT,
                             rg TEXT NOT NULL,
-                            email TEXT NOT NULL,
-                            estado_civil TEXT NOT NULL,
-                            telefone TEXT NOT NULL,
-                            sexo TEXT NOT NULL,
-                            data DATE NOT NULL,
                             data_nascimento DATE NOT NULL,
+                            sexo TEXT NOT NULL,
                             naturaliade TEXT NOT NULL,
+                            estado_civil TEXT NOT NULL,
                             endereco TEXT NOT NULL,
+                            telefone_fixo TEXT,
+                            telefone_celular TEXT NOT NULL,
+                            nome_empresa TEXT,
                             endereco_empresa TEXT NOT NULL,
-                            valor_colaborar REAL NOT NULL,
-                            nome_empresa TEXT NOT NULL,
+                            telefone_empresa TEXT,
                             profissao TEXT NOT NULL,
+                            valor_colaborar REAL NOT NULL,
                             em_que_pode_ajuar_apam TEXT NOT NULL,
                             outras_formas_de_ajudar_apam TEXT NOT NULL,
                             expectativa_trabalho_voluntario TEXT NOT NULL,
@@ -45,12 +47,13 @@ class RegistrationSystem:
 
     def register_apam(self, values_table: list, table: str='bancoapam'):
         colunas = self.get_columns(table=table)
-        inter = ['?'] * len(values_table)  # Use o comprimento de values_table
+        inter = ['?'] * len(colunas)  # Use o comprimento de colunas
         query = f"INSERT INTO {table}({', '.join(colunas)}) VALUES ({','.join(inter)})"
         self.c.execute(query, values_table)
         self.conn.commit()
         messagebox.showinfo('Sucesso', 'Registrado com Sucesso!')
         print("Registrado com Sucesso!")
+
 
 
     def view_all_bancoapam(self, table: str='bancoapam'):
@@ -70,7 +73,8 @@ class RegistrationSystem:
         data = valor_atualizado
         colunas = self.get_columns(table=table)
         if data:
-            query = f"UPDATE {table} SET name=?, cpf=?, data=?, email=?, endereco=?, endereco_empresa=?, valor_colaborar=?, nome_empresa=?, profissao=?, em_que_pode_ajuar_apam=?, outras_formas_de_ajudar_apam=?, expectativa_trabalho_voluntario=?, imagem=? WHERE id=?"
+            #ajuste os campos da linha abaixo conforme as talbelas
+            query = f"UPDATE {table} SET data_registro=?, email=?, name=?, cpf=?, rg=?, data_nascimento=?, sexo=?, naturaliade=?, estado_civil=?, endereco=?, telefone_fixo=?, telefone_celular=?, nome_empresa=?, endereco_empresa=?, telefone_empresa=?, profissao=?, valor_colaborar=?, em_que_pode_ajuar_apam=?, outras_formas_de_ajudar_apam=?, expectativa_trabalho_voluntario=?, imagem=? WHERE id=?"
             self.c.execute(query, valor_atualizado)
             self.conn.commit()
             messagebox.showinfo('Sucesso', f'Informação do ID {valor_atualizado[0]} foi atualizada!')
