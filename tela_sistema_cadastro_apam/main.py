@@ -141,88 +141,88 @@ def adicionar():
     imagem = imagem_string
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem]
     
-    for i in lista:
-        if not Validacao.verificarCampo(i):
-            messagebox.showerror('Erro', 'Preencha todos os campos')
-            return
+    # for i in lista:
+    #     if not Validacao.verificarCampo(i):
+    #         messagebox.showerror('Erro', 'Preencha todos os campos')
+    #         return
 
     
 
-    if not Validacao.validarCPF(cpf):
-        messagebox.showerror('Erro', 'CPF inválido')
-        return
-    if not Validacao.validarEmail(email):
-        messagebox.showerror('Erro', 'Email inválido')
-        return
-    if not Validacao.validarCEP(endereco):
-        messagebox.showerror('Erro', 'CEP inválido')
-        return
-    if not Validacao.validarTelefone_e_Celular(l_telefone_celular):
-        messagebox.showerror('Erro', 'Telefone/Celular inválido')
-        return
-    if not Validacao.validarSexo(sexo):
-        messagebox.showerror('Erro', 'Sexo inválido')
-        return
-    if not Validacao.validarNome(data_registro):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(email):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(name):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(cpf):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(rg):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(data_nascimento):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(sexo):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(naturalidade):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(estado_civil):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(endereco):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(telefone_fixo):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(nome_empresa):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(nome_empresa):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(endereco_empresa):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(telefone_empresa):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(profissao):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(valor_colaborar):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(em_que_pode_ajudar_apam):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(outras_formas_de_ajudar_apam):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarNome(expectativa_trabalho_volutario):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
+    # if not Validacao.validarCPF(cpf):
+    #     messagebox.showerror('Erro', 'CPF inválido')
+    #     return
+    # if not Validacao.validarEmail(email):
+    #     messagebox.showerror('Erro', 'Email inválido')
+    #     return
+    # if not Validacao.validarCEP(endereco):
+    #     messagebox.showerror('Erro', 'CEP inválido')
+    #     return
+    # if not Validacao.validarTelefone_e_Celular(l_telefone_celular):
+    #     messagebox.showerror('Erro', 'Telefone/Celular inválido')
+    #     return
+    # if not Validacao.validarSexo(sexo):
+    #     messagebox.showerror('Erro', 'Sexo inválido')
+    #     return
+    # if not Validacao.validarNome(data_registro):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(email):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(name):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(cpf):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(rg):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(data_nascimento):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(sexo):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(naturalidade):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(estado_civil):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(endereco):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(telefone_fixo):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(nome_empresa):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(nome_empresa):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(endereco_empresa):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(telefone_empresa):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(profissao):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(valor_colaborar):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(em_que_pode_ajudar_apam):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(outras_formas_de_ajudar_apam):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
+    # if not Validacao.validarNome(expectativa_trabalho_volutario):
+    #     messagebox.showerror('Erro', 'Nome inválido')
+    #     return
     
    
     # apam = (data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario)

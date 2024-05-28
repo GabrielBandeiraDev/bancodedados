@@ -22,37 +22,38 @@ class RegistrationSystem:
     def create_tables(self):
         self.c.execute('''CREATE TABLE IF NOT EXISTS bancoapam
                             (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            nome_empresa TEXT,
+                            data_registro DATE NOT NULL,
+                            email TEXT NOT NULL,
+                            name TEXT NOT NULL,
                             cpf TEXT,
                             rg TEXT NOT NULL,
                             data_nascimento DATE NOT NULL,
-                            estado_civil TEXT NOT NULL,
-                            data_registro DATE NOT NULL,
                             sexo TEXT NOT NULL,
-                            email TEXT NOT NULL,
                             naturaliade TEXT NOT NULL,
+                            estado_civil TEXT NOT NULL,
                             endereco TEXT NOT NULL,
+                            telefone_fixo TEXT,
                             telefone_celular TEXT NOT NULL,
-                            profissao TEXT NOT NULL,
+                            nome_empresa TEXT,
                             endereco_empresa TEXT NOT NULL,
-                            telefone_empresa TEXT,  
+                            telefone_empresa TEXT,
+                            profissao TEXT NOT NULL,
+                            valor_colaborar REAL NOT NULL,
                             em_que_pode_ajuar_apam TEXT NOT NULL,
                             outras_formas_de_ajudar_apam TEXT NOT NULL,
-                            telefone_empresa TEXT,                                         
-                            
-                            
-                            
-                        '')
+                            expectativa_trabalho_voluntario TEXT NOT NULL,
+                            imagem TEXT NOT NULL)''')
         self.conn.commit()
 
     def register_apam(self, values_table: list, table: str='bancoapam'):
         colunas = self.get_columns(table=table)
-        inter = ['?'] * len(values_table)  # Use o comprimento de values_table
+        inter = ['?'] * len(colunas)  # Use o comprimento de colunas
         query = f"INSERT INTO {table}({', '.join(colunas)}) VALUES ({','.join(inter)})"
         self.c.execute(query, values_table)
         self.conn.commit()
         messagebox.showinfo('Sucesso', 'Registrado com Sucesso!')
         print("Registrado com Sucesso!")
+
 
 
     def view_all_bancoapam(self, table: str='bancoapam'):
