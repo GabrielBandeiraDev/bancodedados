@@ -50,7 +50,7 @@ def main(page: ft.Page):
             page.snack_bar = ft.SnackBar(ft.Text("Cadastro Realizado com Sucesso"))
             page.snack_bar.open = True
             page.update()
-     
+
         dlg_modal = ft.AlertDialog(
             modal=True,
             title=ft.Text("Por Favor Confirme"),
@@ -396,7 +396,7 @@ def main(page: ft.Page):
 
     page.title = "SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)"
     # page.theme_mode = ft.ThemeMode.LIGHT
-    # page.bgcolor = '#feffff'
+    page.bgcolor = ft.colors.INDIGO_900
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     # label_style_color = ft.TextStyle(color=ft.colors.BLACK87)
@@ -439,3 +439,4 @@ def main(page: ft.Page):
         )
     )
 ft.app(target=main)
+    
