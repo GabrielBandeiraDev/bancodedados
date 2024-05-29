@@ -456,7 +456,7 @@ d_data_nascimento.place(x=393, y=84)
 
 l_sexo = Label(frame_detalhes, text="SEXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_sexo.place(x=745, y=60)
-s_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='center')
+s_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='center', state='readonly')
 s_sexo['values'] = ('M','F')
 s_sexo.place(x=745, y=85)
 
@@ -534,16 +534,10 @@ v_valor_colaborar.place(x=234, y=368)
 i_imagem = ttk.Entry(frame_detalhes, width=30, justify='left')
 i_imagem.place(x=665, y=234)
 
-estado_civil_p = ['Solteiro','Casado','União estável']
-estado_civil = []
-
-for i in estado_civil_p:
-	estado_civil.append(i)
-
 l_estado_civil = Label(frame_detalhes, text="ESTADO CIVIL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_estado_civil.place(x=558, y=60)
-e_estado_civil = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'))
-e_estado_civil['values'] = (estado_civil)
+e_estado_civil = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'), state='readonly')
+e_estado_civil['values'] = ('Solteiro(a)','Casado(a)','Separado(a)','Divorciado(a)','Viúvo(a)', 'União estável')
 e_estado_civil.place(x=558, y=85)
 
 #funcao para escolher imagem
