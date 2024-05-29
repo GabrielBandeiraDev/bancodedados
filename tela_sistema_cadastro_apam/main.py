@@ -273,9 +273,9 @@ def procurar():
 	t_telefone_empresa.delete(0, END)
 	p_profissao.delete(0, END)
 	v_valor_colaborar.delete(0, END)
-	e_em_que_pode_ajudar_apam.delete(0, END)
-	o_outras_formas_de_ajudar_apam.delete(0, END)
-	e_expectativa_trabalho_volutario.delete(0, END)
+	e_em_que_pode_ajudar_apam.delete("1.0", END)
+	o_outras_formas_de_ajudar_apam.delete("1.0", END)
+	e_expectativa_trabalho_volutario.delete("1.0", END)
 
 	# inser os valores
 	d_data_registro.insert(END,dados[1])
@@ -340,13 +340,13 @@ def atualizar():
 	em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
 	outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
 	expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
-	imagem = i_imagem_string
+	imagem = imagem_string
 
 	
 	lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem, id_apam]
 
 	# Verificando caso algum campo esteja vazio ou nao
-	for i in lista:
+	for i in lista[-2]:
 		if i == '':
 			messagebox.showerror('Erro', 'Preencha todos os campos')
 			return
@@ -370,11 +370,11 @@ def atualizar():
 	n_nome_empresa.delete(0, END)
 	e_endereco_empresa.delete(0, END)
 	t_telefone_empresa.delete(0, END)
-	p_profissao.delete.delete(0, END)
+	p_profissao.delete(0, END)
 	v_valor_colaborar.delete(0, END)
-	e_em_que_pode_ajudar_apam.delete(0, END)
-	o_outras_formas_de_ajudar_apam.delete(0, END)
-	e_expectativa_trabalho_volutario.delete(0, END)
+	e_em_que_pode_ajudar_apam.delete("1.0", END)
+	o_outras_formas_de_ajudar_apam.delete("1.0", END)
+	e_expectativa_trabalho_volutario.delete("1.0", END)
 
 	# abre a imagem
 	imagem  = Image.open('assets/logo.png')
@@ -413,7 +413,7 @@ def deletar():
 	n_nome_empresa.delete(0, END)
 	e_endereco_empresa.delete(0, END)
 	t_telefone_empresa.delete(0, END)
-	p_profissao.delete.delete(0, END)
+	p_profissao.delete(0, END)
 	v_valor_colaborar.delete(0, END)
 	e_em_que_pode_ajudar_apam.delete(0, END)
 	o_outras_formas_de_ajudar_apam.delete(0, END)
@@ -501,7 +501,7 @@ e_endereco_empresa.place(x=393, y=234)
 
 l_telefone_empresa = Label(frame_detalhes, text="TELEFONE EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_empresa.place(x=665, y=209)
-t_telefone_empresa = ttk.Entry(frame_detalhes, width=18, justify='left')
+t_telefone_empresa = ttk.Entry(frame_detalhes, width=10, justify='left')
 t_telefone_empresa.place(x=665, y=234)
 
 l_data_registro = Label(frame_detalhes, text="DATA REGISTRO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -643,7 +643,7 @@ app_adicionar.grid(row=1, column=0, pady=5, padx=10, sticky=NSEW)
 app_img_atualizar = Image.open('assets/update.png')
 app_img_atualizar = app_img_atualizar.resize((25,25))
 app_img_atualizar = ImageTk.PhotoImage(app_img_atualizar)
-app_atualizar = Button(frame_botoes,command=atualizar, image=app_img_atualizar, text=" Atualizar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_atualizar = Button(frame_botoes,command=atualizar, image=app_img_atualizar, text=" Atualizar Dados", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_atualizar.grid(row=2, column=0, pady=5, padx=10, sticky=NSEW)
 
 app_img_deletar = Image.open('assets/delete.png')
