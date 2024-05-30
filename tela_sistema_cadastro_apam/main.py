@@ -48,11 +48,7 @@ class Example(ThemedTk):
 #janelas 
 janela = Tk()
 janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
-<<<<<<< HEAD
-janela.geometry('1200x900')
-=======
 janela.geometry('1200x800')
->>>>>>> 23a9b54969b3a9ab7697523afb585a2f6e3cc010
 janela.configure(background=co1)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -86,13 +82,8 @@ frame_botoes.grid(row=1, column=0, pady=10, padx=10, sticky=NSEW)
 frame_detalhes = Frame(janela, width=885, height=460, bg=co1, relief=SOLID)
 frame_detalhes.grid(row=1, column=1, pady=0, padx=0, sticky=NSEW)
 
-<<<<<<< HEAD
-frame_tabela = Frame(janela, width=1200, height=200, bg=co1)
-frame_tabela.grid(row=2, column=0, pady=300, padx=10, sticky=NSEW, columnspan=5)
-=======
 frame_tabela = Frame(janela, width=885, height=1200, bg=co1)
 frame_tabela.grid(row=3, column=0, pady=10, padx=10, sticky=NSEW, columnspan=5)
->>>>>>> 23a9b54969b3a9ab7697523afb585a2f6e3cc010
 
 
 # frame Logo
