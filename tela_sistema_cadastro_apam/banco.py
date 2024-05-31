@@ -41,8 +41,7 @@ class RegistrationSystem:
                             valor_colaborar REAL NOT NULL,
                             em_que_pode_ajuar_apam TEXT NOT NULL,
                             outras_formas_de_ajudar_apam TEXT NOT NULL,
-                            expectativa_trabalho_voluntario TEXT NOT NULL,
-                            imagem TEXT NOT NULL)''')
+                            expectativa_trabalho_voluntario TEXT NOT NULL)''')
         self.conn.commit()
 
     def register_apam(self, values_table: list, table: str='bancoapam'):

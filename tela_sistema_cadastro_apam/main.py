@@ -130,8 +130,7 @@ def adicionar():
     em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
     outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
     expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
-    imagem = imagem_string
-    lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem]
+    lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
     
     # for i in lista:
     #     if not Validacao.verificarCampo(i):
@@ -139,13 +138,12 @@ def adicionar():
     #         return
 
     
-
-    # if not Validacao.validarCPF(cpf):
-    #     messagebox.showerror('Erro', 'CPF inválido')
-    #     return
-    # if not Validacao.validarEmail(email):
-    #     messagebox.showerror('Erro', 'Email inválido')
-    #     return
+    if not Validacao.validarEmail(email):
+        messagebox.showerror('Erro', 'Email inválido')
+        return
+    if not Validacao.validarCPF(cpf):
+        messagebox.showerror('Erro', 'CPF inválido')
+        return
     # if not Validacao.validarCEP(endereco):
     #     messagebox.showerror('Erro', 'CEP inválido')
     #     return
@@ -155,7 +153,7 @@ def adicionar():
     # if not Validacao.validarSexo(sexo):
     #     messagebox.showerror('Erro', 'Sexo inválido')
     #     return
-    # if not Validacao.validarNome(data_registro):
+    # if not Validacao.validarNome(name):
     #     messagebox.showerror('Erro', 'Nome inválido')
     #     return
     # if not Validacao.validarNome(email):
@@ -452,6 +450,7 @@ r_rg.place(x=197, y=84)
 l_data_nascimento = Label(frame_detalhes, text="DATA NASC. *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_nascimento.place(x=393, y=60)
 d_data_nascimento = DateEntry(frame_detalhes, width=15, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
+d_data_nascimento.delete(0, END)
 d_data_nascimento.place(x=393, y=84)
 
 l_sexo = Label(frame_detalhes, text="SEXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -508,6 +507,7 @@ t_telefone_empresa.place(x=665, y=234)
 l_data_registro = Label(frame_detalhes, text="DATA REGISTRO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_registro.place(x=665, y=159)
 d_data_registro = DateEntry(frame_detalhes, width=16, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
+d_data_registro.delete(0, END)
 d_data_registro.place(x=665, y=184)
 
 l_em_que_pode_ajudar_apam = Label(frame_detalhes, text="EM QUE PODE AJUDAR APAM *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)

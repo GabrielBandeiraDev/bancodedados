@@ -88,6 +88,3 @@ class Validacao:
 
 
 registration_system = RegistrationSystem()
-
-
-
