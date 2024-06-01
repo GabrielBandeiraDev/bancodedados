@@ -126,95 +126,69 @@ def adicionar():
     endereco_empresa = e_endereco_empresa.get()
     telefone_empresa = t_telefone_empresa.get()
     profissao = p_profissao.get()
-    valor_colaborar = v_valor_colaborar.get()
+    
+    valor_colaborar = float((v_valor_colaborar.get()).replace(",", "."))
+    
     em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
     outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
     expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
-    imagem = imagem_string
-    lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem]
+    
+    lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
     
     # for i in lista:
     #     if not Validacao.verificarCampo(i):
     #         messagebox.showerror('Erro', 'Preencha todos os campos')
     #         return
 
-    
-
-    # if not Validacao.validarCPF(cpf):
-    #     messagebox.showerror('Erro', 'CPF inválido')
-    #     return
-    # if not Validacao.validarEmail(email):
-    #     messagebox.showerror('Erro', 'Email inválido')
-    #     return
-    # if not Validacao.validarCEP(endereco):
-    #     messagebox.showerror('Erro', 'CEP inválido')
-    #     return
-    # if not Validacao.validarTelefone_e_Celular(l_telefone_celular):
-    #     messagebox.showerror('Erro', 'Telefone/Celular inválido')
-    #     return
-    # if not Validacao.validarSexo(sexo):
-    #     messagebox.showerror('Erro', 'Sexo inválido')
-    #     return
-    # if not Validacao.validarNome(data_registro):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(email):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(name):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(cpf):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(rg):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(data_nascimento):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(sexo):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(naturalidade):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(estado_civil):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(endereco):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(telefone_fixo):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(nome_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(nome_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(endereco_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(telefone_empresa):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(profissao):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(valor_colaborar):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(em_que_pode_ajudar_apam):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(outras_formas_de_ajudar_apam):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
-    # if not Validacao.validarNome(expectativa_trabalho_volutario):
-    #     messagebox.showerror('Erro', 'Nome inválido')
-    #     return
+# ------------- Validações ---------------
+    if not Validacao.verificarCampo(data_registro):
+        messagebox.showerror('Erro', 'Data de Registro Invalida')
+        return
+    if not Validacao.validarEmail(email):
+        messagebox.showerror('Erro', 'Email inválido')
+        return
+    if not Validacao.validarNome(name):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return
+    if not Validacao.validarCPF(cpf):
+        messagebox.showerror('Erro', 'CPF inválido')
+        return
+    if not Validacao.validarRG(rg):
+        messagebox.showerror('Erro', 'RG inválido')
+        return
+    if not Validacao.verificarCampo(data_nascimento):
+        messagebox.showerror('Erro', 'Data de Nascimento Invalida')
+        return
+    if not Validacao.verificarCampo(sexo):
+        messagebox.showerror('Erro', 'Sexo Invalido')
+        return
+    if not Validacao.verificarCampo(naturalidade):
+        messagebox.showerror('Erro', 'Naturalidade Invalida')
+        return
+    if not Validacao.verificarCampo(estado_civil):
+        messagebox.showerror('Erro', 'Estado Civil Invalido')
+        return
+    if not Validacao.verificarCampo(endereco):
+        messagebox.showerror('Erro', 'Endereço Invalido')
+        return
+    if not Validacao.validarTelefone_e_Celular(telefone_celular):
+        messagebox.showerror('Erro', 'Telefone Celular Invalido')
+        return
+    if not Validacao.verificarCampo(nome_empresa):
+        messagebox.showerror('Erro', 'Nome da Empresa Invalido')
+        return
+    if not Validacao.verificarCampo(endereco_empresa):
+        messagebox.showerror('Erro', 'Endereço da Empresa Invalido')
+        return
+    if not Validacao.validarTelefone_e_Celular(telefone_empresa):
+        messagebox.showerror('Erro', 'Telefone da Empresa Invalido')
+        return
+    if not Validacao.verificarCampo(profissao):
+        messagebox.showerror('Erro', 'Profissão Invalida')
+        return
+    if not isinstance(valor_colaborar, (int, float)):
+        messagebox.showerror('Erro', 'Valor a Colaborar Invalido')
+        return
     
    
     # apam = (data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario)
@@ -451,7 +425,8 @@ r_rg.place(x=197, y=84)
 
 l_data_nascimento = Label(frame_detalhes, text="DATA NASC. *", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_nascimento.place(x=393, y=60)
-d_data_nascimento = DateEntry(frame_detalhes, width=15, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
+d_data_nascimento = DateEntry(frame_detalhes, width=15, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2024)
+d_data_nascimento.delete(0, END)
 d_data_nascimento.place(x=393, y=84)
 
 l_sexo = Label(frame_detalhes, text="SEXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -460,7 +435,7 @@ s_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='cen
 s_sexo['values'] = ('M','F')
 s_sexo.place(x=745, y=85)
 
-l_telefone_fixo = Label(frame_detalhes, text="TELEFONE FIXO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_fixo = Label(frame_detalhes, text="TELEFONE FIXO", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_fixo.place(x=4, y=109)
 t_telefone_fixo = ttk.Entry(frame_detalhes, width=20, justify='left')
 t_telefone_fixo.place(x=4, y=134)
@@ -507,20 +482,21 @@ t_telefone_empresa.place(x=665, y=234)
 
 l_data_registro = Label(frame_detalhes, text="DATA REGISTRO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_registro.place(x=665, y=159)
-d_data_registro = DateEntry(frame_detalhes, width=16, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2023)
+d_data_registro = DateEntry(frame_detalhes, width=16, justify='center', background='darkblue', foreground='white', borderwidth=2, year=2024)
+d_data_registro.delete(0, END)
 d_data_registro.place(x=665, y=184)
 
-l_em_que_pode_ajudar_apam = Label(frame_detalhes, text="EM QUE PODE AJUDAR APAM *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_em_que_pode_ajudar_apam = Label(frame_detalhes, text="EM QUE PODE AJUDAR APAM", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_em_que_pode_ajudar_apam.place(x=4, y=259)
 e_em_que_pode_ajudar_apam = scrolledtext.ScrolledText(frame_detalhes, width=48, height=3, wrap=WORD)
 e_em_que_pode_ajudar_apam.place(x=4, y=284)
 
-l_outras_formas_de_ajudar_apam = Label(frame_detalhes, text="OUTRAS FORMAS DE AJUDAR APAM *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_outras_formas_de_ajudar_apam = Label(frame_detalhes, text="OUTRAS FORMAS DE AJUDAR APAM", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_outras_formas_de_ajudar_apam.place(x=430, y=345)
 o_outras_formas_de_ajudar_apam = scrolledtext.ScrolledText(frame_detalhes, width=46, height=3, wrap=WORD)
 o_outras_formas_de_ajudar_apam.place(x=430, y=368)
 
-l_expectativa_trabalho_volutario = Label(frame_detalhes, text="EXPECTATIVA TRABALHO VOLUNTÁRIO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_expectativa_trabalho_volutario = Label(frame_detalhes, text="EXPECTATIVA TRABALHO VOLUNTÁRIO", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_expectativa_trabalho_volutario.place(x=430, y=259)
 e_expectativa_trabalho_volutario = scrolledtext.ScrolledText(frame_detalhes, width=46, height=3, wrap=WORD)
 e_expectativa_trabalho_volutario.place(x=430, y=284)
@@ -649,7 +625,7 @@ app_deletar.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
 
 # linha separatoria
 
-l_linha = Label(frame_botoes, relief=GROOVE, text='h', width=1, height=123, anchor=NW, font=('Ivy 1'), bg=co1, fg=co0)
+l_linha = Label(frame_botoes, relief=GROOVE, text='h', width=2, height=600, anchor=NW, font=('Ivy 1'), bg=co1, fg=co0)
 l_linha.place(x=265, y=0)
 
 
