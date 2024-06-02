@@ -50,7 +50,7 @@ janela = Tk()
 janela.title("SISTEMA DE CADASTRO | ASSOCIAÇÃO MATO-GROSSENSE PROTETORA DOS ANIMAIS (APAM)")
 janela.geometry('1200x800')
 janela.configure(background=co1)
-janela.resizable(width=FALSE, height=FALSE)
+# janela.resizable(width=FALSE, height=FALSE)
 
 for i in range(5):
     janela.grid_columnconfigure(i, weight=1)
@@ -86,9 +86,6 @@ frame_tabela = Frame(janela, width=885, height=1200, bg=co1)
 frame_tabela.grid(row=3, column=0, pady=10, padx=10, sticky=NSEW, columnspan=5)
 
 
-# frame Logo
-global imagem, imagem_string, l_imagem
-
 app_lg = Image.open('assets/logo.png')
 app_lg = app_lg.resize((65,65))
 app_lg = ImageTk.PhotoImage(app_lg)
@@ -96,20 +93,64 @@ app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grosse
 app_logo.place(x=5, y=0)
 
 
-# abrindo a imagem
-imagem  = Image.open('assets/logo.png')
-imagem = imagem.resize((110, 110))
-imagem = ImageTk.PhotoImage(imagem)
+def validar(lista: list):
+    if not Validacao.verificarCampo(lista[0]):
+        messagebox.showerror('Erro', 'Data de Registro Invalida')
+        return True
+    if not Validacao.validarEmail(lista[1]):
+        messagebox.showerror('Erro', 'Email inválido')
+        return True
+    if not Validacao.validarNome(lista[2]):
+        messagebox.showerror('Erro', 'Nome inválido')
+        return True
+    if not Validacao.validarCPF(lista[3]):
+        messagebox.showerror('Erro', 'CPF inválido')
+        return True
+    if not Validacao.validarRG(lista[4]):
+        messagebox.showerror('Erro', 'RG inválido')
+        return True
+    if not Validacao.verificarCampo(lista[5]):
+        messagebox.showerror('Erro', 'Data de Nascimento Invalida')
+        return True
+    if not Validacao.verificarCampo(lista[6]):
+        messagebox.showerror('Erro', 'Sexo Invalido')
+        return True
+    if not Validacao.verificarCampo(lista[7]):
+        messagebox.showerror('Erro', 'Naturalidade Invalida')
+        return True
+    if not Validacao.verificarCampo(lista[8]):
+        messagebox.showerror('Erro', 'Estado Civil Invalido')
+        return True
+    if not Validacao.verificarCampo(lista[9]):
+        messagebox.showerror('Erro', 'Endereço Invalido')
+        return True
+    if not Validacao.validarTelefone_e_Celular(lista[10]):
+        messagebox.showerror('Erro', 'Telefone Celular Invalido')
+        return True
+    if not Validacao.verificarCampo(lista[11]):
+        messagebox.showerror('Erro', 'Nome da Empresa Invalido')
+        return True
+    if not Validacao.verificarCampo(lista[12]):
+        messagebox.showerror('Erro', 'Endereço da Empresa Invalido')
+        return True
+    if not Validacao.validarTelefone_e_Celular(lista[13]):
+        messagebox.showerror('Erro', 'Telefone da Empresa Invalido')
+        return True
+    if not Validacao.verificarCampo(lista[14]):
+        messagebox.showerror('Erro', 'Profissão Invalida')
+        return True
+    try:
+        float(lista[15])
+        return False
+    except ValueError:
+        messagebox.showerror('Erro', 'Valor a Colaborar Invalido')
+        return True
 
-l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-l_imagem.place(x=5, y=343)
 
 
 # ------------- funcoes para CRUD ---------------
 
-def adicionar():
-    global imagem, imagem_string, l_imagem
-    
+def adicionar():    
     data_registro = d_data_registro.get()
     email = e_email.get()
     name = n_nome.get()
@@ -127,75 +168,19 @@ def adicionar():
     telefone_empresa = t_telefone_empresa.get()
     profissao = p_profissao.get()
     
-    valor_colaborar = float((v_valor_colaborar.get()).replace(",", "."))
+    valor_colaborar = v_valor_colaborar.get().replace(",", ".")
     
     em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
     outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
     expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
     
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
-    
-    # for i in lista:
-    #     if not Validacao.verificarCampo(i):
-    #         messagebox.showerror('Erro', 'Preencha todos os campos')
-    #         return
 
-# ------------- Validações ---------------
-    if not Validacao.verificarCampo(data_registro):
-        messagebox.showerror('Erro', 'Data de Registro Invalida')
-        return
-    if not Validacao.validarEmail(email):
-        messagebox.showerror('Erro', 'Email inválido')
-        return
-    if not Validacao.validarNome(name):
-        messagebox.showerror('Erro', 'Nome inválido')
-        return
-    if not Validacao.validarCPF(cpf):
-        messagebox.showerror('Erro', 'CPF inválido')
-        return
-    if not Validacao.validarRG(rg):
-        messagebox.showerror('Erro', 'RG inválido')
-        return
-    if not Validacao.verificarCampo(data_nascimento):
-        messagebox.showerror('Erro', 'Data de Nascimento Invalida')
-        return
-    if not Validacao.verificarCampo(sexo):
-        messagebox.showerror('Erro', 'Sexo Invalido')
-        return
-    if not Validacao.verificarCampo(naturalidade):
-        messagebox.showerror('Erro', 'Naturalidade Invalida')
-        return
-    if not Validacao.verificarCampo(estado_civil):
-        messagebox.showerror('Erro', 'Estado Civil Invalido')
-        return
-    if not Validacao.verificarCampo(endereco):
-        messagebox.showerror('Erro', 'Endereço Invalido')
-        return
-    if not Validacao.validarTelefone_e_Celular(telefone_celular):
-        messagebox.showerror('Erro', 'Telefone Celular Invalido')
-        return
-    if not Validacao.verificarCampo(nome_empresa):
-        messagebox.showerror('Erro', 'Nome da Empresa Invalido')
-        return
-    if not Validacao.verificarCampo(endereco_empresa):
-        messagebox.showerror('Erro', 'Endereço da Empresa Invalido')
-        return
-    if not Validacao.validarTelefone_e_Celular(telefone_empresa):
-        messagebox.showerror('Erro', 'Telefone da Empresa Invalido')
-        return
-    if not Validacao.verificarCampo(profissao):
-        messagebox.showerror('Erro', 'Profissão Invalida')
-        return
-    if not isinstance(valor_colaborar, (int, float)):
-        messagebox.showerror('Erro', 'Valor a Colaborar Invalido')
-        return
-    
-   
-    # apam = (data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario)
-    # registration_system.register_apam(apam)
-    registration_system.register_apam(lista)
-    
-    # Limpando campos de entrada
+	# ------------- Validações ---------------
+    if not validar(lista):
+        registration_system.register_apam(lista)
+
+	# Limpando campos de entrada
     d_data_registro.delete(0, END)
     e_email.delete(0, END)
     n_nome.delete(0, END)
@@ -216,14 +201,12 @@ def adicionar():
     o_outras_formas_de_ajudar_apam.delete("1.0", END)
     e_expectativa_trabalho_volutario.delete("1.0", END)
     e_em_que_pode_ajudar_apam.delete("1.0", END)
-    
+
     mostrar_tabela()
 
 
 # funcao procurar
 def procurar():
-	global imagem, imagem_string, l_imagem
-
 	# obtendo o id
 	id_apam = int(e_procurar.get())
 
@@ -275,99 +258,71 @@ def procurar():
 	e_expectativa_trabalho_volutario.insert(END,dados[20])
 	
 
-	imagem = dados[21]
-	imagem_string = imagem
-
-
-	imagem  = Image.open(imagem)
-	imagem = imagem.resize((130, 130))
-	imagem = ImageTk.PhotoImage(imagem)
-
-	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=5, y=343)
-
 
 
 def atualizar():
-	global imagem, imagem_string, l_imagem
-
-	# obtendo o id
-	id_apam = int(e_procurar.get())
- 
- 	# obtendo os valores
-	data_registro = d_data_registro.get()
-	email = e_email.get()
-	name = n_nome.get()
-	cpf = c_cpf.get()
-	rg = r_rg.get()
-	data_nascimento = d_data_nascimento.get()
-	sexo = s_sexo.get()
-	naturalidade = n_naturalidade.get()
-	estado_civil = e_estado_civil.get()
-	endereco = e_endereco.get()
-	telefone_fixo = t_telefone_fixo.get()
-	telefone_celular = t_telefone_celular.get()
-	nome_empresa = n_nome_empresa.get()
-	endereco_empresa = e_endereco_empresa.get()
-	telefone_empresa = t_telefone_empresa.get()
-	profissao = p_profissao.get()
-	valor_colaborar = v_valor_colaborar.get()
-	em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
-	outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
-	expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
-	imagem = imagem_string
-
-	
-	lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, imagem, id_apam]
-
-	# Verificando caso algum campo esteja vazio ou nao
-	for i in lista[-2]:
-		if i == '':
-			messagebox.showerror('Erro', 'Preencha todos os campos')
-			return
-
-	# atualizar cadastro do apam
-	registration_system.update_apam(lista)
- 
- 	# limpando os campos de entradas
-	d_data_registro.delete(0, END)
-	e_email.delete(0, END)
-	n_nome.delete(0, END)
-	c_cpf.delete(0, END)
-	r_rg.delete(0, END)
-	d_data_nascimento.delete(0, END)
-	s_sexo.delete(0, END)
-	n_naturalidade.delete(0, END)
-	e_estado_civil.delete(0, END)
-	e_endereco.delete(0, END)
-	t_telefone_fixo.delete(0, END)
-	t_telefone_celular.delete(0, END)
-	n_nome_empresa.delete(0, END)
-	e_endereco_empresa.delete(0, END)
-	t_telefone_empresa.delete(0, END)
-	p_profissao.delete(0, END)
-	v_valor_colaborar.delete(0, END)
-	e_em_que_pode_ajudar_apam.delete("1.0", END)
-	o_outras_formas_de_ajudar_apam.delete("1.0", END)
-	e_expectativa_trabalho_volutario.delete("1.0", END)
-
-	# abre a imagem
-	imagem  = Image.open('assets/logo.png')
-	imagem = imagem.resize((130, 130))
-	imagem = ImageTk.PhotoImage(imagem)
-
-	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=5, y=343)
-
-	# mostrando os valores na Tabela
-	mostrar_tabela()
+    # obtendo o id
+    id_apam = int(e_procurar.get())
+    
+    # obtendo os valores
+    data_registro = d_data_registro.get()
+    email = e_email.get()
+    name = n_nome.get()
+    cpf = c_cpf.get()
+    rg = r_rg.get()
+    data_nascimento = d_data_nascimento.get()
+    sexo = s_sexo.get()
+    naturalidade = n_naturalidade.get()
+    estado_civil = e_estado_civil.get()
+    endereco = e_endereco.get()
+    telefone_fixo = t_telefone_fixo.get()
+    telefone_celular = t_telefone_celular.get()
+    nome_empresa = n_nome_empresa.get()
+    endereco_empresa = e_endereco_empresa.get()
+    telefone_empresa = t_telefone_empresa.get()
+    profissao = p_profissao.get()
+    valor_colaborar = v_valor_colaborar.get()
+    em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
+    outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
+    expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
+    
+    
+    lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, id_apam]
+    
+    # Verificando caso algum campo esteja vazio ou nao
+    if not validar(lista):
+        # atualizar cadastro do apam
+        registration_system.update_apam(lista)
+    
+    # limpando os campos de entradas
+    d_data_registro.delete(0, END)
+    e_email.delete(0, END)
+    n_nome.delete(0, END)
+    c_cpf.delete(0, END)
+    r_rg.delete(0, END)
+    d_data_nascimento.delete(0, END)
+    s_sexo.delete(0, END)
+    n_naturalidade.delete(0, END)
+    e_estado_civil.delete(0, END)
+    e_endereco.delete(0, END)
+    t_telefone_fixo.delete(0, END)
+    t_telefone_celular.delete(0, END)
+    n_nome_empresa.delete(0, END)
+    e_endereco_empresa.delete(0, END)
+    t_telefone_empresa.delete(0, END)
+    p_profissao.delete(0, END)
+    v_valor_colaborar.delete(0, END)
+    e_em_que_pode_ajudar_apam.delete("1.0", END)
+    o_outras_formas_de_ajudar_apam.delete("1.0", END)
+    e_expectativa_trabalho_volutario.delete("1.0", END)
+    
+    # mostrando os valores na Tabela
+    mostrar_tabela()
 
 
 
 # funcao deletar
 def deletar():
-	global imagem, imagem_string, l_imagem
-
 	# obtendo o id
 	id_apam = int(e_procurar.get())
 
@@ -396,13 +351,6 @@ def deletar():
 
 	e_procurar.delete(0,END)
 
-	# abrindo a imagem
-	imagem  = Image.open('assets/logo.png')
-	imagem = imagem.resize((130, 130))
-	imagem = ImageTk.PhotoImage(imagem)
-
-	l_imagem = Label(frame_detalhes, image=imagem,bg=co1, fg=co4 )
-	l_imagem.place(x=5, y=343)
 
 	# mostrando os valores na Tabela
 	mostrar_tabela()
@@ -506,35 +454,11 @@ l_valor_colaborar.place(x=234, y=345)
 v_valor_colaborar = ttk.Entry(frame_detalhes, width=20, justify='left')
 v_valor_colaborar.place(x=234, y=368)
 
-# Definindo o widget de entrada i_imagem
-i_imagem = ttk.Entry(frame_detalhes, width=30, justify='left')
-i_imagem.place(x=665, y=234)
-
 l_estado_civil = Label(frame_detalhes, text="ESTADO CIVIL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_estado_civil.place(x=558, y=60)
 e_estado_civil = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'), state='readonly')
 e_estado_civil['values'] = ('Solteiro(a)','Casado(a)','Separado(a)','Divorciado(a)','Viúvo(a)', 'União estável')
 e_estado_civil.place(x=558, y=85)
-
-#funcao para escolher imagem
-
-def escolher_imagem():
-	global imagem, imagem_string, l_imagem
- 
-	imagem = fd.askopenfilename()
-	imagem_string = imagem
-
-	#abre a imagem
-	imagem = Image.open(imagem)
-	imagem = imagem.resize((110,110))
-	imagem = ImageTk.PhotoImage(imagem)
-	l_imagem = Label(frame_detalhes, image=imagem, bg=co1, fg=co4)
-	l_imagem.place(x=4, y=343)
-
-	botao_carregar['text'] = 'Trocar de foto'
-
-botao_carregar = Button(frame_detalhes, command=escolher_imagem, text="Carregar Foto".upper(), width=12, compound=CENTER, anchor=CENTER, overrelief=RIDGE, font=('Ivy 7 bold'), bg=co1, fg=co0)
-botao_carregar.place(x=124, y=368)
 
 
 # Tabela do banco apam
