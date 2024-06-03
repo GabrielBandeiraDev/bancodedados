@@ -7,6 +7,7 @@ from tkinter import messagebox
 from tkinter import filedialog as fd
 from ttkthemes import ThemedTk
 from tkinter import scrolledtext
+from verperfil import VisualizarPerfil
 
 
 # importando pillow
@@ -176,7 +177,7 @@ def adicionar():
     
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
 
-	# ------------- Validações ---------------
+# ------------- Validações ---------------
     if not validar(lista):
         registration_system.register_apam(lista)
 
@@ -546,6 +547,20 @@ app_img_deletar = app_img_deletar.resize((25,25))
 app_img_deletar = ImageTk.PhotoImage(app_img_deletar)
 app_deletar = Button(frame_botoes, command=deletar, image=app_img_deletar, text=" Deletar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_deletar.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
+
+def visualizar_perfil():
+    try:
+        user_id = int(e_procurar.get())
+        VisualizarPerfil(janela, user_id)
+    except ValueError:
+        messagebox.showerror("Erro", "ID inválido. Por favor, insira um ID numérico.")
+
+app_img_visualizar = Image.open('assets/verperfil.png')  # Certifique-se de ter um ícone 'view.png'
+app_img_visualizar = app_img_visualizar.resize((30, 30))
+app_img_visualizar = ImageTk.PhotoImage(app_img_visualizar)
+app_visualizar = Button(frame_botoes, command=visualizar_perfil, image=app_img_visualizar, text=" Visualizar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_visualizar.grid(row=4, column=0, pady=5, padx=10, sticky=NSEW)
+
 
 # linha separatoria
 
