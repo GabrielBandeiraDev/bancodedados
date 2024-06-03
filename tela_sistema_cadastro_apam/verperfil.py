@@ -123,8 +123,3 @@ class VisualizarPerfil(tk.Toplevel):
 #             except Exception as e:
 #                 print(f"Erro ao carregar a imagem: {e}")
 #                 self.canvas.create_text(55, 55, text="Sem foto", fill="black")
-
-# # Para abrir a janela VisualizarPerfil, basta usar o código abaixo:
-# # janela = tk.Tk()
-# # visualizar_perfil = VisualizarPerfil(janela, user_id=1)
-# # janela.mainloop()

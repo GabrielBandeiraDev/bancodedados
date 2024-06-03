@@ -426,7 +426,7 @@ e_endereco_empresa.place(x=393, y=234)
 
 l_telefone_empresa = Label(frame_detalhes, text="TELEFONE EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_empresa.place(x=665, y=209)
-t_telefone_empresa = ttk.Entry(frame_detalhes, width=10, justify='left')
+t_telefone_empresa = ttk.Entry(frame_detalhes, width=18, justify='left')
 t_telefone_empresa.place(x=665, y=234)
 
 l_data_registro = Label(frame_detalhes, text="DATA REGISTRO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
