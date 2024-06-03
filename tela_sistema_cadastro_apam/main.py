@@ -125,23 +125,23 @@ def validar(lista: list):
     if not Validacao.verificarCampo(lista[9]):
         messagebox.showerror('Erro', 'Endereço Invalido')
         return True
-    if not Validacao.validarTelefone_e_Celular(lista[10]):
+    if not Validacao.validarTelefone_e_Celular(lista[11]):
         messagebox.showerror('Erro', 'Telefone Celular Invalido')
         return True
-    if not Validacao.verificarCampo(lista[11]):
+    if not Validacao.verificarCampo(lista[12]):
         messagebox.showerror('Erro', 'Nome da Empresa Invalido')
         return True
-    if not Validacao.verificarCampo(lista[12]):
+    if not Validacao.verificarCampo(lista[13]):
         messagebox.showerror('Erro', 'Endereço da Empresa Invalido')
         return True
-    if not Validacao.validarTelefone_e_Celular(lista[13]):
+    if not Validacao.validarTelefone_e_Celular(lista[14]):
         messagebox.showerror('Erro', 'Telefone da Empresa Invalido')
         return True
-    if not Validacao.verificarCampo(lista[14]):
+    if not Validacao.verificarCampo(lista[15]):
         messagebox.showerror('Erro', 'Profissão Invalida')
         return True
     try:
-        float(lista[15])
+        float(lista[16])
         return False
     except ValueError:
         messagebox.showerror('Erro', 'Valor a Colaborar Invalido')
@@ -181,27 +181,27 @@ def adicionar():
     if not validar(lista):
         registration_system.register_apam(lista)
 
-	# Limpando campos de entrada
-    d_data_registro.delete(0, END)
-    e_email.delete(0, END)
-    n_nome.delete(0, END)
-    c_cpf.delete(0, END)
-    r_rg.delete(0, END)
-    d_data_nascimento.delete(0, END)
-    s_sexo.delete(0, END)
-    n_naturalidade.delete(0, END)
-    e_estado_civil.delete(0, END)
-    e_endereco.delete(0, END)
-    t_telefone_fixo.delete(0, END)
-    t_telefone_celular.delete(0, END)
-    n_nome_empresa.delete(0, END)
-    e_endereco_empresa.delete(0, END)
-    t_telefone_empresa.delete(0, END)
-    p_profissao.delete(0, END)
-    v_valor_colaborar.delete(0, END)
-    o_outras_formas_de_ajudar_apam.delete("1.0", END)
-    e_expectativa_trabalho_volutario.delete("1.0", END)
-    e_em_que_pode_ajudar_apam.delete("1.0", END)
+	# # Limpando campos de entrada
+    # d_data_registro.delete(0, END)
+    # e_email.delete(0, END)
+    # n_nome.delete(0, END)
+    # c_cpf.delete(0, END)
+    # r_rg.delete(0, END)
+    # d_data_nascimento.delete(0, END)
+    # s_sexo.delete(0, END)
+    # n_naturalidade.delete(0, END)
+    # e_estado_civil.delete(0, END)
+    # e_endereco.delete(0, END)
+    # t_telefone_fixo.delete(0, END)
+    # t_telefone_celular.delete(0, END)
+    # n_nome_empresa.delete(0, END)
+    # e_endereco_empresa.delete(0, END)
+    # t_telefone_empresa.delete(0, END)
+    # p_profissao.delete(0, END)
+    # v_valor_colaborar.delete(0, END)
+    # o_outras_formas_de_ajudar_apam.delete("1.0", END)
+    # e_expectativa_trabalho_volutario.delete("1.0", END)
+    # e_em_que_pode_ajudar_apam.delete("1.0", END)
 
     mostrar_tabela()
 
