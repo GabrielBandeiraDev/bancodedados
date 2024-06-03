@@ -125,23 +125,23 @@ def validar(lista: list):
     if not Validacao.verificarCampo(lista[9]):
         messagebox.showerror('Erro', 'Endereço Invalido')
         return True
-    if not Validacao.validarTelefone_e_Celular(lista[10]):
+    if not Validacao.validarTelefone_e_Celular(lista[11]):
         messagebox.showerror('Erro', 'Telefone Celular Invalido')
         return True
-    if not Validacao.verificarCampo(lista[11]):
+    if not Validacao.verificarCampo(lista[12]):
         messagebox.showerror('Erro', 'Nome da Empresa Invalido')
         return True
-    if not Validacao.verificarCampo(lista[12]):
+    if not Validacao.verificarCampo(lista[13]):
         messagebox.showerror('Erro', 'Endereço da Empresa Invalido')
         return True
-    if not Validacao.validarTelefone_e_Celular(lista[13]):
+    if not Validacao.validarTelefone_e_Celular(lista[14]):
         messagebox.showerror('Erro', 'Telefone da Empresa Invalido')
         return True
-    if not Validacao.verificarCampo(lista[14]):
+    if not Validacao.verificarCampo(lista[15]):
         messagebox.showerror('Erro', 'Profissão Invalida')
         return True
     try:
-        float(lista[15])
+        float(lista[16])
         return False
     except ValueError:
         messagebox.showerror('Erro', 'Valor a Colaborar Invalido')
