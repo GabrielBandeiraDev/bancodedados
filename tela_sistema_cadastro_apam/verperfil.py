@@ -72,9 +72,9 @@ class VisualizarPerfil(tk.Toplevel):
                 val.place(x=label[1], y=label[2] + 25)
                 self.fields[label[0].replace(" ", "_").lower()] = val
 
-        # Image placeholder
-        self.canvas = tk.Canvas(self.frame_detalhes, width=110, height=110, bg="#e5e5e5", relief=tk.SOLID)
-        self.canvas.place(x=4, y=343)
+        # # Image placeholder
+        # self.canvas = tk.Canvas(self.frame_detalhes, width=110, height=110, bg="#e5e5e5", relief=tk.SOLID)
+        # self.canvas.place(x=4, y=343)
 
     def load_user_data(self):
         user_data = self.registration_system.search_apam(self.user_id)
