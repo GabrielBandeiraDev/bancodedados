@@ -68,8 +68,6 @@ def maximize_window(event=None):
 
 janela.bind("<Configure>", maximize_window)
 
-
-
 style = Style(janela)
 style.theme_use("clam")
 
@@ -92,7 +90,6 @@ app_lg = app_lg.resize((65,65))
 app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grossense Protetora dos Animais", width=1200, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1, padx=20)
 app_logo.place(x=5, y=0)
-
 
 def validar(lista: list):
     if not Validacao.verificarCampo(lista[0]):
