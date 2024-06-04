@@ -73,7 +73,7 @@ class RegistrationSystem:
         colunas = self.get_columns(table=table)
         if data:
             #ajuste os campos da linha abaixo conforme as talbelas
-            query = f"UPDATE {table} SET data_registro=?, email=?, name=?, cpf=?, rg=?, data_nascimento=?, sexo=?, naturaliade=?, estado_civil=?, endereco=?, telefone_fixo=?, telefone_celular=?, nome_empresa=?, endereco_empresa=?, telefone_empresa=?, profissao=?, valor_colaborar=?, em_que_pode_ajuar_apam=?, outras_formas_de_ajudar_apam=?, expectativa_trabalho_voluntario=?, imagem=? WHERE id=?"
+            query = f"UPDATE {table} SET data_registro=?, email=?, name=?, cpf=?, rg=?, data_nascimento=?, sexo=?, naturaliade=?, estado_civil=?, endereco=?, telefone_fixo=?, telefone_celular=?, nome_empresa=?, endereco_empresa=?, telefone_empresa=?, profissao=?, valor_colaborar=?, em_que_pode_ajuar_apam=?, outras_formas_de_ajudar_apam=?, expectativa_trabalho_voluntario=? WHERE id=?"
             self.c.execute(query, valor_atualizado)
             self.conn.commit()
             messagebox.showinfo('Sucesso', f'Informação do ID {valor_atualizado[0]} foi atualizada!')
