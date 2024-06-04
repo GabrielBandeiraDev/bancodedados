@@ -13,18 +13,18 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          - os: windows-2019
           - os: ubuntu-22.04
           # - os: macos-latest
-          - os: windows-2019
     steps:
       - name: Install tk on ubuntu
-        if: ${{ matrix.config.os == 'ubuntu-22.04'}}
+        if: matrix.config.os == 'ubuntu-22.04'
         run: |
           sudo apt-get update
           sudo apt install python3-tk python3-dev python3-setuptools tcl
           
       - name: Install pywin32
-        if: ${{ matrix.config.os == 'windows-2019'}}
+        if: matrix.config.os == 'windows-2019'
         run: pip install pywin32
 
       - name: Checkout code
@@ -51,7 +51,7 @@ jobs:
       - name: Upload result job ${{ matrix.config.os }}
         uses: actions/upload-artifact@v3
         with:
-          name: APAM-pyinstaller-artifact
+          name: APAM-pyinstaller-artifact-${{ matrix.config.os }}
           path: ./dist*
 
   release:
@@ -62,16 +62,23 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
-          name: APAM-pyinstaller-artifact
+          name: APAM-pyinstaller-artifact-ubuntu-22.04
+          path: dist-ubuntu-22.04
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: APAM-pyinstaller-artifact-windows-2019
+          path: dist-windows-2019
 
       - name: Zip file windows
-        run: zip -r APAM_windows.zip dist-windows-*
+        run: zip -r APAM_windows.zip dist-windows-2019
 
       - name: Zip file ubuntu
-        run: zip -r APAM_ubuntu.zip dist-ubuntu-*
+        run: zip -r APAM_ubuntu.zip dist-ubuntu-22.04
 
       # - name: Zip file macos
-      #   run: zip -r APAM_macos.zip dist-macos-*
+      #   run: zip -r APAM_macos.zip dist-macos-latest
 
       - name: Create Release
         id: create_release
@@ -82,6 +89,7 @@ jobs:
           tag_name: ${{ github.ref }}
           draft: false
           prerelease: false
-          files: APAM_windows.zip
-                APAM_ubuntu.zip
+          files: |
+            APAM_windows.zip
+            APAM_ubuntu.zip
           # APAM_macos.zip
