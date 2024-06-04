@@ -172,6 +172,7 @@ def adicionar():
     
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
 
+
 # ------------- Validações ---------------
     if not validar(lista):
         registration_system.register_apam(lista)
