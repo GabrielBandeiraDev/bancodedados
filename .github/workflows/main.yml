@@ -2,8 +2,8 @@ name: Create Release
 
 on:
   push:
-    # tags:
-    #   - 'v[0-9]+.[0-9]+.[0-9]+'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build:
@@ -17,6 +17,16 @@ jobs:
           # - os: macos-latest
           - os: windows-2019
     steps:
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}  # This dynamically sets the tag name
+          draft: false
+          prerelease: false
+          files: APAM_windows.zip
+                APAM_ubuntu.zip
       - name: Install tk on ubuntu
         if: ${{ matrix.config.os == 'ubuntu-22.04'}}
         run: |
