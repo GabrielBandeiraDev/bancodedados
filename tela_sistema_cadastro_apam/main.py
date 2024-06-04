@@ -65,7 +65,6 @@ def maximize_window(event=None):
     # y = (screen_height // 5) - (window_height // 5)
     # janela.geometry(f"{window_width}x{window_height}+{x}+{y}")
     
-
 janela.bind("<Configure>", maximize_window)
 
 style = Style(janela)
