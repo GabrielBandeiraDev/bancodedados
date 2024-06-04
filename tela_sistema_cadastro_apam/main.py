@@ -144,8 +144,6 @@ def validar(lista: list):
         messagebox.showerror('Erro', 'Valor a Colaborar Invalido')
         return True
 
-
-
 # ------------- funcoes para CRUD ---------------
 
 def adicionar():    
