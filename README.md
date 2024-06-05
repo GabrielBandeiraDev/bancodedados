@@ -2,6 +2,8 @@
 
 <p style="color: #2E8B57;">Este projeto é sem fins lucrativos para atender as necessidades da ONG Associação Mato-Grossense Protetora dos Animais (APAM) 🐈🐕
 
+Para garantir que nosso ambiente seja o mais acolhedor e produtivo possível, gostaríamos de lembrar algumas boas práticas e maneiras:
+
 * _Respeito mútuo_: Aqui na nossa ONG, todos são tratados com respeito e consideração. 
 * _Colaboração_: Estamos todos juntos nessa missão!
 * _Comunicação clara_: Se surgir alguma dúvida ou preocupação, não hesite em comunicar-se conosco.
