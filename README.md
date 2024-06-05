@@ -61,11 +61,8 @@
     <li>Abra um Pull Request.</li>
 </ol>
 
-<h2 style="color: #8B0000;">Licença</h2>
-<p style="color: #8B0000;">Este projeto está licenciado sob a Licença MIT - veja o arquivo <a href="LICENSE" style="color: #8B0000;">LICENSE</a> para mais detalhes.</p>
-
 <h2 style="color: #8B008B;">Contato</h2>
-<p style="color: #8B008B;">Para mais informações, entre em contato através de <a href="mailto:email@example.com" style="color: #8B008B;">email@example.com</a>.</p>
+<p style="color: #8B008B;">Para mais informações, entre em contato através de <a href="mailto:edlane345@gmail.com" style="color: #8B008B;">apammt@gmail.com</a>.</p>
 
 <hr>
 
