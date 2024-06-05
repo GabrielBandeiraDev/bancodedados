@@ -21,7 +21,7 @@
         <pre style="background-color: #f9f9f9; padding: 10px;"><code>git clone https://github.com/GabrielBandeiraDev/bancodedados.git</code></pre>
     </li>
     <li>Navegue até o diretório do projeto:
-        <pre style="background-color: #f9f9f9; padding: 10px;"><code>cd projeto-cadastro-pessoas</code></pre>
+        <pre style="background-color: #f9f9f9; padding: 10px;"><code>cd bancodedados</code></pre>
     </li>
     <li>Instale as dependências:
         <pre style="background-color: #f9f9f9; padding: 10px;"><code>pip install -r requirements.txt</code></pre>
