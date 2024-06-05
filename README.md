@@ -1,6 +1,10 @@
 <h1 style="color: #2E8B57;">Projeto Cadastro de Pessoas</h1>
 
-<p style="color: #2E8B57;">Este projeto é sem fins lucrativos para atender as necessidades da ONG Associação Mato-Grossense Protetora dos Animais (APAM).</p>
+<p style="color: #2E8B57;">Este projeto é sem fins lucrativos para atender as necessidades da ONG Associação Mato-Grossense Protetora dos Animais (APAM) Respeito mútuo: Aqui na nossa ONG, todos são tratados com respeito e consideração. 
+Colaboração: Estamos todos juntos nessa missão!
+Comunicação clara: Se surgir alguma dúvida ou preocupação, não hesite em comunicar-se conosco.
+
+Gratidão: Por último, mas não menos importante, gostaríamos de expressar nossa profunda gratidão por seu tempo e dedicação .</p>
 
 <h2 style="color: #4682B4;">Objetivo</h2>
 
