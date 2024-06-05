@@ -67,7 +67,7 @@
 </ol>
 
 <h2 style="color: #8B008B;">Contato</h2>
-<p style="color: #8B008B;">Para mais informações, entre em contato através de <a href="mailto:edlane345@gmail.com" style="color: #8B008B;">apammt@gmail.com</a>.</p>
+<p style="color: #8B008B;">Para mais informações, entre em contato através de <a href="mailto:apammt@gmail.com" style="color: #8B008B;">apammt@gmail.com</a>.</p>
 
 <hr>
 
