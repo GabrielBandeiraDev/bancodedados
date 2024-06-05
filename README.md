@@ -69,4 +69,5 @@
 
 <hr>
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Logo_APAM.jpg/1200px-Logo_APAM.jpg" alt="APAM Logo" style="width: 200px;">
+<img src="https://github.com/GabrielBandeiraDev/bancodedados/raw/main/assets/logo.png" alt="APAM Logo" style="width: 200px;">
+
