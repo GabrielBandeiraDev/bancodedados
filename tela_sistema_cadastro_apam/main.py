@@ -65,10 +65,7 @@ def maximize_window(event=None):
     # y = (screen_height // 5) - (window_height // 5)
     # janela.geometry(f"{window_width}x{window_height}+{x}+{y}")
     
-
 janela.bind("<Configure>", maximize_window)
-
-
 
 style = Style(janela)
 style.theme_use("clam")
@@ -92,7 +89,6 @@ app_lg = app_lg.resize((65,65))
 app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grossense Protetora dos Animais", width=1200, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1, padx=20)
 app_logo.place(x=5, y=0)
-
 
 def validar(lista: list):
     if not Validacao.verificarCampo(lista[0]):
@@ -148,7 +144,6 @@ def validar(lista: list):
         return True
 
 
-
 # ------------- funcoes para CRUD ---------------
 
 def adicionar():    
@@ -176,6 +171,7 @@ def adicionar():
     expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
     
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
+
 
 # ------------- Validações ---------------
     if not validar(lista):
