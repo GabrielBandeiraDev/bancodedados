@@ -42,7 +42,7 @@ Para garantir que nosso ambiente seja o mais acolhedor e produtivo possível, go
 <h2 style="color: #D2691E;">Como Usar</h2>
 <ol style="color: #D2691E;">
     <li>Abra seu navegador e vá para <code>http://localhost:5000</code>.</li>
-    <li>Use a interface para cadastrar, visualizar e gerenciar voluntários.</li>
+    <li>Use a interface para cadastrar, visualizar e gerenciar doadores.</li>
 </ol>
 
 <h2 style="color: #0077B5;">Profissionais Envolvidos</h2>
