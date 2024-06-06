@@ -146,7 +146,6 @@ def validar(lista: list):
 
 
 # ------------- funcoes para CRUD ---------------
-
 def adicionar():    
     data_registro = d_data_registro.get()
     email = e_email.get()
@@ -280,6 +279,9 @@ def deletar():
 	# mostrando os valores na Tabela
     mostrar_tabela()
 
+NameVarFixo = tk.StringVar(value="")
+NameVarMovel = tk.StringVar(value="")
+NameVarEmpresa = tk.StringVar(value="")
 
 l_nome = Label(frame_detalhes, text="NOME *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_nome.place(x=4, y=10)
@@ -308,14 +310,22 @@ s_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='cen
 s_sexo['values'] = ('M','F')
 s_sexo.place(x=745, y=85)
 
-l_telefone_fixo = Label(frame_detalhes, text="TELEFONE FIXO", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_fixo = Label(frame_detalhes, text="TEL. FIXO", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_fixo.place(x=4, y=109)
-t_telefone_fixo = ttk.Entry(frame_detalhes, width=20, justify='left')
+t_telefone_fixo = ttk.Entry(frame_detalhes, textvariable=NameVarFixo, width=20, justify='left')
+t_telefone_fixo.insert(0, "(XX)XXXXX-XXXX")
+t_telefone_fixo.pack()
+t_telefone_fixo.bind("<FocusIn>", lambda event: t_telefone_fixo.delete(0,"end") if NameVarFixo.get() == "(XX)XXXXX-XXXX" else None)
+t_telefone_fixo.bind("<FocusOut>", lambda event: t_telefone_fixo.insert(0, "(XX)XXXXX-XXXX") if NameVarFixo.get() == "" else None)
 t_telefone_fixo.place(x=4, y=134)
 
-l_telefone_celular = Label(frame_detalhes, text="TELEFONE MÓVEL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_celular = Label(frame_detalhes, text="TEL. MÓVEL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_celular.place(x=197, y=109)
-t_telefone_celular = ttk.Entry(frame_detalhes, width=20, justify='left')
+t_telefone_celular = ttk.Entry(frame_detalhes, textvariable=NameVarMovel, width=20, justify='left')
+t_telefone_celular.insert(0, "(XX)XXXXX-XXXX")
+t_telefone_celular.pack()
+t_telefone_celular.bind("<FocusIn>", lambda event: t_telefone_celular.delete(0,"end") if NameVarMovel.get() == "(XX)XXXXX-XXXX" else None)
+t_telefone_celular.bind("<FocusOut>", lambda event: t_telefone_celular.insert(0, "(XX)XXXXX-XXXX") if NameVarMovel.get() == "" else None)
 t_telefone_celular.place(x=197, y=134)
 
 l_naturalidade = Label(frame_detalhes, text="NATURALIDADE *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -348,9 +358,13 @@ l_endereco_empresa.place(x=393, y=209)
 e_endereco_empresa = ttk.Entry(frame_detalhes, width=30, justify='left')
 e_endereco_empresa.place(x=393, y=234)
 
-l_telefone_empresa = Label(frame_detalhes, text="TELEFONE EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_empresa = Label(frame_detalhes, text="TEL. EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_empresa.place(x=665, y=209)
-t_telefone_empresa = ttk.Entry(frame_detalhes, width=18, justify='left')
+t_telefone_empresa = ttk.Entry(frame_detalhes, textvariable=NameVarEmpresa, width=18, justify='left')
+t_telefone_empresa.insert(0, "(XX)XXXXX-XXXX")
+t_telefone_empresa.pack()
+t_telefone_empresa.bind("<FocusIn>", lambda event: t_telefone_empresa.delete(0,"end") if NameVarEmpresa.get() == "(XX)XXXXX-XXXX" else None)
+t_telefone_empresa.bind("<FocusOut>", lambda event: t_telefone_empresa.insert(0, "(XX)XXXXX-XXXX") if NameVarEmpresa.get() == "" else None)
 t_telefone_empresa.place(x=665, y=234)
 
 l_data_registro = Label(frame_detalhes, text="DATA REGISTRO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
