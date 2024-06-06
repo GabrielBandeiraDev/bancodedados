@@ -90,6 +90,7 @@ app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grossense Protetora dos Animais", width=1200, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1, padx=20)
 app_logo.place(x=5, y=0)
 
+
 def validar(lista: list):
     if not Validacao.verificarCampo(lista[0]):
         messagebox.showerror('Erro', 'Data de Registro Invalida')
@@ -145,7 +146,6 @@ def validar(lista: list):
 
 
 # ------------- funcoes para CRUD ---------------
-
 def adicionar():    
     data_registro = d_data_registro.get()
     email = e_email.get()
@@ -177,27 +177,8 @@ def adicionar():
     if not validar(lista):
         registration_system.register_apam(lista)
 
-	# Limpando campos de entrada
-    d_data_registro.delete(0, END)
-    e_email.delete(0, END)
-    n_nome.delete(0, END)
-    c_cpf.delete(0, END)
-    r_rg.delete(0, END)
-    d_data_nascimento.delete(0, END)
-    s_sexo.delete(0, END)
-    n_naturalidade.delete(0, END)
-    e_estado_civil.delete(0, END)
-    e_endereco.delete(0, END)
-    t_telefone_fixo.delete(0, END)
-    t_telefone_celular.delete(0, END)
-    n_nome_empresa.delete(0, END)
-    e_endereco_empresa.delete(0, END)
-    t_telefone_empresa.delete(0, END)
-    p_profissao.delete(0, END)
-    v_valor_colaborar.delete(0, END)
-    o_outras_formas_de_ajudar_apam.delete("1.0", END)
-    e_expectativa_trabalho_volutario.delete("1.0", END)
-    e_em_que_pode_ajudar_apam.delete("1.0", END)
+	# Limpando campos de entrada    
+    limpar_campos(lista_campos)
 
     mostrar_tabela()
 
@@ -205,153 +186,102 @@ def adicionar():
 # funcao procurar
 def procurar():
 	# obtendo o id
-	id_apam = int(e_procurar.get())
-
-	# procura o ID do apam
-	dados = registration_system.search_apam(id_apam)
-
-	# limpando os campos de entradas
-	d_data_registro.delete(0, END)
-	e_email.delete(0, END)
-	n_nome.delete(0, END)
-	c_cpf.delete(0, END)
-	r_rg.delete(0, END)
-	d_data_nascimento.delete(0, END)
-	s_sexo.delete(0, END)
-	n_naturalidade.delete(0, END)
-	e_estado_civil.delete(0, END)
-	e_endereco.delete(0, END)
-	t_telefone_fixo.delete(0, END)
-	t_telefone_celular.delete(0, END)
-	n_nome_empresa.delete(0, END)
-	e_endereco_empresa.delete(0, END)
-	t_telefone_empresa.delete(0, END)
-	p_profissao.delete(0, END)
-	v_valor_colaborar.delete(0, END)
-	e_em_que_pode_ajudar_apam.delete("1.0", END)
-	o_outras_formas_de_ajudar_apam.delete("1.0", END)
-	e_expectativa_trabalho_volutario.delete("1.0", END)
+    id_apam = int(e_procurar.get())
+    
+    # procura o ID do apam
+    dados = registration_system.search_apam(id_apam)
+    
+    # limpando os campos de entradas    
+    limpar_campos(lista_campos)
 
 	# inser os valores
-	d_data_registro.insert(END,dados[1])
-	e_email.insert(END,dados[2])
-	n_nome.insert(END,dados[3])
-	c_cpf.insert(END,dados[4])
-	r_rg.insert(END,dados[5])
-	d_data_nascimento.insert(END,dados[6])
-	s_sexo.insert(END,dados[7])
-	n_naturalidade.insert(END,dados[8])
-	e_estado_civil.insert(END,dados[9])
-	e_endereco.insert(END,dados[10])
-	t_telefone_fixo.insert(END,dados[11])
-	t_telefone_celular.insert(END,dados[12])
-	n_nome_empresa.insert(END,dados[13])
-	e_endereco_empresa.insert(END,dados[14])
-	t_telefone_empresa.insert(END,dados[15])
-	p_profissao.insert(END,dados[16])
-	v_valor_colaborar.insert(END,dados[17])
-	e_em_que_pode_ajudar_apam.insert(END,dados[18])
-	o_outras_formas_de_ajudar_apam.insert(END,dados[19])
-	e_expectativa_trabalho_volutario.insert(END,dados[20])
+    d_data_registro.insert(END,dados[1])
+    e_email.insert(END,dados[2])
+    n_nome.insert(END,dados[3])
+    c_cpf.insert(END,dados[4])
+    r_rg.insert(END,dados[5])
+    d_data_nascimento.insert(END,dados[6])
+    s_sexo.insert(END,dados[7])
+    n_naturalidade.insert(END,dados[8])
+    e_estado_civil.insert(END,dados[9])
+    e_endereco.insert(END,dados[10])
+    t_telefone_fixo.insert(END,dados[11])
+    t_telefone_celular.insert(END,dados[12])
+    n_nome_empresa.insert(END,dados[13])
+    e_endereco_empresa.insert(END,dados[14])
+    t_telefone_empresa.insert(END,dados[15])
+    p_profissao.insert(END,dados[16])
+    v_valor_colaborar.insert(END,dados[17])
+    e_em_que_pode_ajudar_apam.insert(END,dados[18])
+    o_outras_formas_de_ajudar_apam.insert(END,dados[19])
+    e_expectativa_trabalho_volutario.insert(END,dados[20])
 	
 
 
 
 def atualizar():
     # obtendo o id
-    id_apam = int(e_procurar.get())
-    
-    # obtendo os valores
-    data_registro = d_data_registro.get()
-    email = e_email.get()
-    name = n_nome.get()
-    cpf = c_cpf.get()
-    rg = r_rg.get()
-    data_nascimento = d_data_nascimento.get()
-    sexo = s_sexo.get()
-    naturalidade = n_naturalidade.get()
-    estado_civil = e_estado_civil.get()
-    endereco = e_endereco.get()
-    telefone_fixo = t_telefone_fixo.get()
-    telefone_celular = t_telefone_celular.get()
-    nome_empresa = n_nome_empresa.get()
-    endereco_empresa = e_endereco_empresa.get()
-    telefone_empresa = t_telefone_empresa.get()
-    profissao = p_profissao.get()
-    valor_colaborar = v_valor_colaborar.get()
-    em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
-    outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
-    expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
-    
-    
-    lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, id_apam]
-    
-    # Verificando caso algum campo esteja vazio ou nao
-    if not validar(lista):
-        # atualizar cadastro do apam
-        registration_system.update_apam(lista)
-    
-    # limpando os campos de entradas
-    d_data_registro.delete(0, END)
-    e_email.delete(0, END)
-    n_nome.delete(0, END)
-    c_cpf.delete(0, END)
-    r_rg.delete(0, END)
-    d_data_nascimento.delete(0, END)
-    s_sexo.delete(0, END)
-    n_naturalidade.delete(0, END)
-    e_estado_civil.delete(0, END)
-    e_endereco.delete(0, END)
-    t_telefone_fixo.delete(0, END)
-    t_telefone_celular.delete(0, END)
-    n_nome_empresa.delete(0, END)
-    e_endereco_empresa.delete(0, END)
-    t_telefone_empresa.delete(0, END)
-    p_profissao.delete(0, END)
-    v_valor_colaborar.delete(0, END)
-    e_em_que_pode_ajudar_apam.delete("1.0", END)
-    o_outras_formas_de_ajudar_apam.delete("1.0", END)
-    e_expectativa_trabalho_volutario.delete("1.0", END)
-    
-    # mostrando os valores na Tabela
-    mostrar_tabela()
+    if not e_procurar.get():
+        messagebox.showerror("Erro", "Insira o ID do Voluntario")
+    else:
+        id_apam = int(e_procurar.get())
+        
+        # obtendo os valores
+        data_registro = d_data_registro.get()
+        email = e_email.get()
+        name = n_nome.get()
+        cpf = c_cpf.get()
+        rg = r_rg.get()
+        data_nascimento = d_data_nascimento.get()
+        sexo = s_sexo.get()
+        naturalidade = n_naturalidade.get()
+        estado_civil = e_estado_civil.get()
+        endereco = e_endereco.get()
+        telefone_fixo = t_telefone_fixo.get()
+        telefone_celular = t_telefone_celular.get()
+        nome_empresa = n_nome_empresa.get()
+        endereco_empresa = e_endereco_empresa.get()
+        telefone_empresa = t_telefone_empresa.get()
+        profissao = p_profissao.get()
+        valor_colaborar = v_valor_colaborar.get()
+        em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
+        outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
+        expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
+        
+        
+        lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, id_apam]
+        
+        # Verificando caso algum campo esteja vazio ou nao
+        if not validar(lista):
+            # atualizar cadastro do apam
+            registration_system.update_apam(lista)
+        
+        # limpando os campos de entradas
+        limpar_campos(lista_campos)
+        
+        # mostrando os valores na Tabela
+        mostrar_tabela()
 
 
 
 # funcao deletar
 def deletar():
 	# obtendo o id
-	id_apam = int(e_procurar.get())
+    id_apam = int(e_procurar.get())
+    registration_system.delete_apam(id_apam)
 
 	# limpando os campos de entradas
-	registration_system.delete_apam(id_apam)
-	d_data_registro.delete(0, END)
-	e_email.delete(0, END)
-	n_nome.delete(0, END)
-	c_cpf.delete(0, END)
-	r_rg.delete(0, END)
-	d_data_nascimento.delete(0, END)
-	s_sexo.delete(0, END)
-	n_naturalidade.delete(0, END)
-	e_estado_civil.delete(0, END)
-	e_endereco.delete(0, END)
-	t_telefone_fixo.delete(0, END)
-	t_telefone_celular.delete(0, END)
-	n_nome_empresa.delete(0, END)
-	e_endereco_empresa.delete(0, END)
-	t_telefone_empresa.delete(0, END)
-	p_profissao.delete(0, END)
-	v_valor_colaborar.delete(0, END)
-	e_em_que_pode_ajudar_apam.delete(0, END)
-	o_outras_formas_de_ajudar_apam.delete(0, END)
-	e_expectativa_trabalho_volutario.delete(0, END)
+    limpar_campos(lista_campos)
 
-	e_procurar.delete(0,END)
+    e_procurar.delete(0,END)
 
 
 	# mostrando os valores na Tabela
-	mostrar_tabela()
+    mostrar_tabela()
 
+NameVarFixo = tk.StringVar(value="")
+NameVarMovel = tk.StringVar(value="")
+NameVarEmpresa = tk.StringVar(value="")
 
 l_nome = Label(frame_detalhes, text="NOME *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_nome.place(x=4, y=10)
@@ -380,14 +310,22 @@ s_sexo = ttk.Combobox(frame_detalhes, width=7, font=('Ivy 8 bold'), justify='cen
 s_sexo['values'] = ('M','F')
 s_sexo.place(x=745, y=85)
 
-l_telefone_fixo = Label(frame_detalhes, text="TELEFONE FIXO", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_fixo = Label(frame_detalhes, text="TEL. FIXO", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_fixo.place(x=4, y=109)
-t_telefone_fixo = ttk.Entry(frame_detalhes, width=20, justify='left')
+t_telefone_fixo = ttk.Entry(frame_detalhes, textvariable=NameVarFixo, width=20, justify='left')
+t_telefone_fixo.insert(0, "(XX)XXXXX-XXXX")
+t_telefone_fixo.pack()
+t_telefone_fixo.bind("<FocusIn>", lambda event: t_telefone_fixo.delete(0,"end") if NameVarFixo.get() == "(XX)XXXXX-XXXX" else None)
+t_telefone_fixo.bind("<FocusOut>", lambda event: t_telefone_fixo.insert(0, "(XX)XXXXX-XXXX") if NameVarFixo.get() == "" else None)
 t_telefone_fixo.place(x=4, y=134)
 
-l_telefone_celular = Label(frame_detalhes, text="TELEFONE MÓVEL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_celular = Label(frame_detalhes, text="TEL. MÓVEL *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_celular.place(x=197, y=109)
-t_telefone_celular = ttk.Entry(frame_detalhes, width=20, justify='left')
+t_telefone_celular = ttk.Entry(frame_detalhes, textvariable=NameVarMovel, width=20, justify='left')
+t_telefone_celular.insert(0, "(XX)XXXXX-XXXX")
+t_telefone_celular.pack()
+t_telefone_celular.bind("<FocusIn>", lambda event: t_telefone_celular.delete(0,"end") if NameVarMovel.get() == "(XX)XXXXX-XXXX" else None)
+t_telefone_celular.bind("<FocusOut>", lambda event: t_telefone_celular.insert(0, "(XX)XXXXX-XXXX") if NameVarMovel.get() == "" else None)
 t_telefone_celular.place(x=197, y=134)
 
 l_naturalidade = Label(frame_detalhes, text="NATURALIDADE *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -420,9 +358,13 @@ l_endereco_empresa.place(x=393, y=209)
 e_endereco_empresa = ttk.Entry(frame_detalhes, width=30, justify='left')
 e_endereco_empresa.place(x=393, y=234)
 
-l_telefone_empresa = Label(frame_detalhes, text="TELEFONE EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
+l_telefone_empresa = Label(frame_detalhes, text="TEL. EMPRESA *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_telefone_empresa.place(x=665, y=209)
-t_telefone_empresa = ttk.Entry(frame_detalhes, width=18, justify='left')
+t_telefone_empresa = ttk.Entry(frame_detalhes, textvariable=NameVarEmpresa, width=18, justify='left')
+t_telefone_empresa.insert(0, "(XX)XXXXX-XXXX")
+t_telefone_empresa.pack()
+t_telefone_empresa.bind("<FocusIn>", lambda event: t_telefone_empresa.delete(0,"end") if NameVarEmpresa.get() == "(XX)XXXXX-XXXX" else None)
+t_telefone_empresa.bind("<FocusOut>", lambda event: t_telefone_empresa.insert(0, "(XX)XXXXX-XXXX") if NameVarEmpresa.get() == "" else None)
 t_telefone_empresa.place(x=665, y=234)
 
 l_data_registro = Label(frame_detalhes, text="DATA REGISTRO *", height=1, anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
@@ -456,6 +398,31 @@ l_estado_civil.place(x=558, y=60)
 e_estado_civil = ttk.Combobox(frame_detalhes, width=20, font=('Ivy 8 bold'), state='readonly')
 e_estado_civil['values'] = ('Solteiro(a)','Casado(a)','Separado(a)','Divorciado(a)','Viúvo(a)', 'União estável')
 e_estado_civil.place(x=558, y=85)
+
+lista_campos = [d_data_registro, e_email, n_nome, c_cpf, r_rg, d_data_nascimento, s_sexo, n_naturalidade, e_estado_civil, e_endereco, t_telefone_fixo, t_telefone_celular, n_nome_empresa, e_endereco_empresa,     t_telefone_empresa, p_profissao, v_valor_colaborar, o_outras_formas_de_ajudar_apam, e_expectativa_trabalho_volutario, e_em_que_pode_ajudar_apam]
+
+
+def limpar_campos(lista: list = lista_campos):
+    lista[0].delete(0, END)
+    lista[1].delete(0, END)
+    lista[2].delete(0, END)
+    lista[3].delete(0, END)
+    lista[4].delete(0, END)
+    lista[5].delete(0, END)
+    lista[6].delete(0, END)
+    lista[7].delete(0, END)
+    lista[8].delete(0, END)
+    lista[9].delete(0, END)
+    lista[10].delete(0, END)
+    lista[11].delete(0, END)
+    lista[12].delete(0, END)
+    lista[13].delete(0, END)
+    lista[14].delete(0, END)
+    lista[15].delete(0, END)
+    lista[16].delete(0, END)
+    lista[17].delete("1.0", END)
+    lista[18].delete("1.0", END)
+    lista[19].delete("1.0", END)
 
 
 # Tabela do banco apam
@@ -544,6 +511,7 @@ app_img_deletar = ImageTk.PhotoImage(app_img_deletar)
 app_deletar = Button(frame_botoes, command=deletar, image=app_img_deletar, text=" Deletar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_deletar.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
 
+
 def visualizar_perfil():
     try:
         user_id = int(e_procurar.get())
@@ -557,6 +525,11 @@ app_img_visualizar = ImageTk.PhotoImage(app_img_visualizar)
 app_visualizar = Button(frame_botoes, command=visualizar_perfil, image=app_img_visualizar, text=" Visualizar", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_visualizar.grid(row=4, column=0, pady=5, padx=10, sticky=NSEW)
 
+app_img_clean = Image.open('assets/clean.png')
+app_img_clean = app_img_clean.resize((25,25))
+app_img_clean = ImageTk.PhotoImage(app_img_clean)
+app_clean = Button(frame_botoes, command=limpar_campos, image=app_img_clean, text=" Limpar Campos", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_clean.grid(row=5, column=0, pady=5, padx=10, sticky=NSEW)
 
 # linha separatoria
 
