@@ -64,6 +64,12 @@ Para garantir que nosso ambiente seja o mais acolhedor e produtivo possível, go
         Desenvolvedor Web - Edlane Rodrigues
     </a>
 </p>
+<p>
+     <a href="https://www.linkedin.com/in/dayvisson-tenorio" style="color: #0077B5; text-decoration: none;">
+        <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+        Analista de Sistemas e Desenvolvedor Java - Dayvisson Tenorio
+    </a>
+</p>
 <h2 style="color: #8B0000;">Contribuição</h2>
 <ol style="color: #8B0000;">
     <li>Faça um fork do projeto.</li>
