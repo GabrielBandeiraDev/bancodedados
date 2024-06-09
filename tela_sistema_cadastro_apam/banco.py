@@ -89,11 +89,19 @@ class RegistrationSystem:
             messagebox.showinfo('Sucesso', f"Informação do ID {id} foi deletada!")
         else:
             messagebox.showerror('Erro', f"Nenhum ID {id} encontrado!")
+    
+    
+    def get_name(self, table: str='bancoapam'):
+        self.c.execute(f'SELECT name FROM {table}')
+        data = self.c.fetchall()
+        return data
 
-    def export_to_excel(self, table: str):
-        self.c.execute(f"SELECT *, oid FROM {table}")
+
+    def export_to_excel(self, table: str='bancoapam'):
+        self.c.execute(f"SELECT * FROM {table}")
         to_excel = self.c.fetchall()
         colunas = self.get_columns(table=table)
+        colunas.insert(0,'id')
         to_excel = pd.DataFrame(to_excel, columns=colunas)
         to_excel.to_excel(f'{table}.xlsx')
         self.conn.commit()
