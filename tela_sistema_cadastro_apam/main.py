@@ -20,6 +20,8 @@ from banco import RegistrationSystem
 from util import Validacao
 # chamdo a view
 from banco import *
+from find_names import AutocompleteEntry
+import re
 
 # cores
 co0 = "#2e2d2b"  # Preta
@@ -90,6 +92,9 @@ app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grossense Protetora dos Animais", width=1200, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1, padx=20)
 app_logo.place(x=5, y=0)
 
+def matches(fieldValue, acListEntry):
+    pattern = re.compile(re.escape(fieldValue) + '.*', re.IGNORECASE)
+    return re.match(pattern, acListEntry)
 
 def validar(lista: list):
     if not Validacao.verificarCampo(lista[0]):
@@ -469,6 +474,7 @@ def mostrar_tabela():
 
 
 # Procura os dados cadastrados
+autocompleteList = [nome[0] for nome in registration_system.get_name()]
 
 frame_procurar = Frame(frame_botoes, width=40, height=50, bg=co1, relief=RAISED)
 frame_procurar.grid(row=0, column=0, pady=10, padx=10, sticky=NSEW)
@@ -478,14 +484,20 @@ l_nome.grid(row=0, column=0, pady=10, padx=0, sticky=NSEW)
 e_procurar = Entry(frame_procurar, width=5, justify='center',relief="solid",font=('Ivy 10'))
 e_procurar.grid(row=1, column=0, pady=10, padx=0, sticky=NSEW)
 
+
+e_procurar = AutocompleteEntry(autocompleteList, frame_procurar,
+                          listboxLength=6, width=20, matchesFunction=matches,
+                          justify='center',relief="solid",font=('Ivy 10'))
+
+
 l_cpf = Label(frame_procurar, text="Realize a Busca pelo  ID ", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_cpf.grid(row=0, column=0, pady=10, padx=0, sticky=NSEW)
-e_procurar = Entry(frame_procurar, width=5, justify='center',relief="solid",font=('Ivy 10'))
+# e_procurar = Entry(frame_procurar, width=5, justify='center',relief="solid",font=('Ivy 10'))
 e_procurar.grid(row=1, column=0, pady=10, padx=0, sticky=NSEW)
 
 l_data_nascimento = Label(frame_procurar, text="Realize a Busca pelo  ID ", height=1,anchor=NW, font=('Ivy 10'), bg=co1, fg=co4)
 l_data_nascimento.grid(row=0, column=0, pady=10, padx=0, sticky=NSEW)
-e_procurar = Entry(frame_procurar, width=5, justify='center',relief="solid",font=('Ivy 10'))
+# e_procurar = Entry(frame_procurar, width=5, justify='center',relief="solid",font=('Ivy 10'))
 e_procurar.grid(row=1, column=0, pady=10, padx=0, sticky=NSEW)
 
 botao_procurar = Button(frame_procurar,command=procurar, anchor=CENTER, text="Procurar", width=9, overrelief=RIDGE,  font=('ivy 7 bold'),bg=co1, fg=co0 )
@@ -530,6 +542,12 @@ app_img_clean = app_img_clean.resize((25,25))
 app_img_clean = ImageTk.PhotoImage(app_img_clean)
 app_clean = Button(frame_botoes, command=limpar_campos, image=app_img_clean, text=" Limpar Campos", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
 app_clean.grid(row=5, column=0, pady=5, padx=10, sticky=NSEW)
+
+app_img_excel = Image.open('assets/sheets.png')
+app_img_excel = app_img_excel.resize((25,25))
+app_img_excel = ImageTk.PhotoImage(app_img_excel)
+app_excel = Button(frame_botoes, command=registration_system.export_to_excel, image=app_img_excel, text=" Exportar Para Excel", width=100, compound=LEFT, relief=GROOVE, overrelief=RIDGE, font=('Ivy 11'), bg=co1, fg=co0)
+app_excel.grid(row=6, column=0, pady=5, padx=10, sticky=NSEW)
 
 # linha separatoria
 
