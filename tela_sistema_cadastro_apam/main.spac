@@ -3,11 +3,11 @@
 block_cipher = None
 
 a = Analysis(
-    ['main.py'],
+    ['tela_sistema_cadastro_apam/main.py'],
     pathex=[], 
     binaries=[],
     datas=[],
-    hiddenimports=['babel.numbers', 'PIL._tkinter_finder'],
+    hiddenimports=['PIL._tkinter_finder'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

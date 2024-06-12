@@ -92,7 +92,7 @@ class RegistrationSystem:
     
     
     def get_name(self, table: str='bancoapam'):
-        self.c.execute(f'SELECT name FROM {table}')
+        self.c.execute(f'SELECT name, oid FROM {table}')
         data = self.c.fetchall()
         return data
 
