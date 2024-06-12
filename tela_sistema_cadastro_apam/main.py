@@ -191,7 +191,8 @@ def adicionar():
 # funcao procurar
 def procurar():
 	# obtendo o id
-    id_apam = int(e_procurar.get())
+    id = re.search(r'\((\d+)\)', e_procurar.get())
+    id_apam = int(id.group(1))
     
     # procura o ID do apam
     dados = registration_system.search_apam(id_apam)
@@ -229,8 +230,8 @@ def atualizar():
     if not e_procurar.get():
         messagebox.showerror("Erro", "Insira o ID do Voluntario")
     else:
-        id_apam = int(e_procurar.get())
-        
+        id = re.search(r'\((\d+)\)', e_procurar.get())
+        id_apam = int(id.group(1))
         # obtendo os valores
         data_registro = d_data_registro.get()
         email = e_email.get()
@@ -272,7 +273,9 @@ def atualizar():
 # funcao deletar
 def deletar():
 	# obtendo o id
-    id_apam = int(e_procurar.get())
+    id = re.search(r'\((\d+)\)', e_procurar.get())
+    id_apam = int(id.group(1))
+    
     registration_system.delete_apam(id_apam)
 
 	# limpando os campos de entradas
@@ -474,7 +477,7 @@ def mostrar_tabela():
 
 
 # Procura os dados cadastrados
-autocompleteList = [nome[0] for nome in registration_system.get_name()]
+autocompleteList = [f'{nome[0]} ({nome[1]})' for nome in registration_system.get_name()]
 
 frame_procurar = Frame(frame_botoes, width=40, height=50, bg=co1, relief=RAISED)
 frame_procurar.grid(row=0, column=0, pady=10, padx=10, sticky=NSEW)
@@ -526,7 +529,8 @@ app_deletar.grid(row=3, column=0, pady=5, padx=10, sticky=NSEW)
 
 def visualizar_perfil():
     try:
-        user_id = int(e_procurar.get())
+        id = re.search(r'\((\d+)\)', e_procurar.get())
+        user_id = int(id.group(1))
         VisualizarPerfil(janela, user_id)
     except ValueError:
         messagebox.showerror("Erro", "ID inválido. Por favor, insira um ID numérico.")
