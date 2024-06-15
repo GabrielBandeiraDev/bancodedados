@@ -182,8 +182,8 @@ def adicionar():
     if not validar(lista):
         registration_system.register_apam(lista)
 
-	# Limpando campos de entrada    
-    limpar_campos(lista_campos)
+        # Limpando campos de entrada    
+        limpar_campos(lista_campos)
 
     mostrar_tabela()
 

@@ -43,7 +43,9 @@ jobs:
           pip install pillow
 
       - name: Build with pyinstaller for ${{ matrix.config.os }}
-        run: pyinstaller tela_sistema_cadastro_apam/main.py --onefile --noconsole --icon=assets/logo.png --name=APAM
+        run: |
+          pyinstaller main.spec
+          cp -r assets/ dist/main/
 
       - name: Rename builded app
         run: mv ./dist ./dist-${{ matrix.config.os }}
