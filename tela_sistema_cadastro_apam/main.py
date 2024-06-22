@@ -201,28 +201,27 @@ def procurar():
     limpar_campos(lista_campos)
 
 	# inser os valores
-    d_data_registro.insert(END,dados[1])
-    e_email.insert(END,dados[2])
-    n_nome.insert(END,dados[3])
-    c_cpf.insert(END,dados[4])
-    r_rg.insert(END,dados[5])
-    d_data_nascimento.insert(END,dados[6])
-    s_sexo.insert(END,dados[7])
-    n_naturalidade.insert(END,dados[8])
-    e_estado_civil.insert(END,dados[9])
-    e_endereco.insert(END,dados[10])
-    t_telefone_fixo.insert(END,dados[11])
-    t_telefone_celular.insert(END,dados[12])
-    n_nome_empresa.insert(END,dados[13])
-    e_endereco_empresa.insert(END,dados[14])
-    t_telefone_empresa.insert(END,dados[15])
-    p_profissao.insert(END,dados[16])
-    v_valor_colaborar.insert(END,dados[17])
-    e_em_que_pode_ajudar_apam.insert(END,dados[18])
-    o_outras_formas_de_ajudar_apam.insert(END,dados[19])
-    e_expectativa_trabalho_volutario.insert(END,dados[20])
-	
-
+    d_data_registro.insert(END,dados[0][1])
+    e_email.insert(END,dados[0][2])
+    n_nome.insert(END,dados[0][3])
+    c_cpf.insert(END,dados[0][4])
+    r_rg.insert(END,dados[0][5])
+    d_data_nascimento.insert(END,dados[0][6])
+    s_sexo.insert(END,dados[0][7])
+    n_naturalidade.insert(END,dados[0][8])
+    e_estado_civil.insert(END,dados[0][9])
+    e_endereco.insert(END,dados[0][10])
+    t_telefone_fixo.insert(END,dados[0][11])
+    t_telefone_celular.insert(END,dados[0][12])
+    n_nome_empresa.insert(END,dados[0][13])
+    e_endereco_empresa.insert(END,dados[0][14])
+    t_telefone_empresa.insert(END,dados[0][15])
+    p_profissao.insert(END,dados[0][16])
+    v_valor_colaborar.insert(END,dados[0][17])
+    e_em_que_pode_ajudar_apam.insert(END,dados[0][18])
+    o_outras_formas_de_ajudar_apam.insert(END,dados[0][19])
+    e_expectativa_trabalho_volutario.insert(END,dados[0][20])
+    e_procurar.delete(0, END)
 
 
 def atualizar():
@@ -267,7 +266,6 @@ def atualizar():
         
         # mostrando os valores na Tabela
         mostrar_tabela()
-
 
 
 # funcao deletar

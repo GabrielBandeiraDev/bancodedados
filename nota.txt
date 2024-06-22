@@ -1,0 +1,1 @@
+Colocar assets no main.spec
