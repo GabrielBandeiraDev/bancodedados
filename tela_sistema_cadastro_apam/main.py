@@ -92,9 +92,11 @@ app_lg = ImageTk.PhotoImage(app_lg)
 app_logo = Label(frame_logo, image=app_lg, text="APAM - Associação Mato-Grossense Protetora dos Animais", width=1200, compound=LEFT, anchor=NW, font=('Verdana 15'), bg=co6, fg=co1, padx=20)
 app_logo.place(x=5, y=0)
 
+
 def matches(fieldValue, acListEntry):
     pattern = re.compile(re.escape(fieldValue) + '.*', re.IGNORECASE)
     return re.match(pattern, acListEntry)
+
 
 def validar(lista: list):
     if not Validacao.verificarCampo(lista[0]):
@@ -176,7 +178,8 @@ def adicionar():
     expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
     
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
-
+    autocompleteList = [f'{nome[0]} ({nome[1]})' for nome in registration_system.get_name()]  # Tornar global
+    
 
 # ------------- Validações ---------------
     if not validar(lista):
@@ -252,6 +255,7 @@ def atualizar():
         em_que_pode_ajudar_apam = e_em_que_pode_ajudar_apam.get("1.0", END)
         outras_formas_de_ajudar_apam = o_outras_formas_de_ajudar_apam.get("1.0", END)
         expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
+        autocompleteList = [f'{nome[0]} ({nome[1]})' for nome in registration_system.get_name()]  # Tornar global
         
         
         lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario, id_apam]
@@ -275,6 +279,8 @@ def deletar():
     id_apam = int(id.group(1))
     
     registration_system.delete_apam(id_apam)
+    autocompleteList = [f'{nome[0]} ({nome[1]})' for nome in registration_system.get_name()]  # Tornar global
+    
 
 	# limpando os campos de entradas
     limpar_campos(lista_campos)
@@ -471,7 +477,6 @@ def mostrar_tabela():
 
 	for item in df_list:
 		tree_apam.insert('', 'end', values=item)
-
 
 
 # Procura os dados cadastrados
