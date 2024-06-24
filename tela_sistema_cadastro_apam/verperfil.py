@@ -77,7 +77,7 @@ class VisualizarPerfil(tk.Toplevel):
         # self.canvas.place(x=4, y=343)
 
     def load_user_data(self):
-        user_data = self.registration_system.search_apam(self.user_id)
+        user_data = self.registration_system.search_apam(self.user_id)[0]
         print(f"User Data: {user_data}")  # Adicionando depuração para ver os dados do usuário
         if user_data:
             fields = {

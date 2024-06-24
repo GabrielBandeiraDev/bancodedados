@@ -32,7 +32,7 @@ class AutocompleteEntry(Entry):
             self.var = self["textvariable"] = StringVar()
 
         self.var.trace('w', self.changed)
-        self.bind("<Right>", self.selection)
+        self.bind("<Right>", self.selection)  # Colocar enter e cursor também
         self.bind("<Up>", self.moveUp)
         self.bind("<Down>", self.moveDown)
 

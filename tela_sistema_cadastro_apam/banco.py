@@ -5,22 +5,28 @@ from tkinter import messagebox
 
 class RegistrationSystem:
     def __init__(self):
-        self.conn = sqlite3.connect('bancoAPAM.db')
-        self.c = self.conn.cursor()
         self.create_tables()
 
+
+    def db_execute(self, query, param = []):
+        with sqlite3.connect('bancoAPAM.db') as conn:
+            c = conn.cursor()
+            c.execute(query, param)
+            conn.commit()
+            return c.fetchall()
+
+
     def get_columns(self, table: str='bancoapam'):
-        self.c.execute(f"PRAGMA table_info({table})")
-        db = self.c.fetchall()
+        db = self.db_execute(f"PRAGMA table_info({table})")
         colunas = []
         for coluna_db in db:
             colunas.append(coluna_db[1])
-        self.conn.commit()
         colunas.pop(0)
         return colunas
 
+
     def create_tables(self):
-        self.c.execute('''CREATE TABLE IF NOT EXISTS bancoapam
+        self.db_execute('''CREATE TABLE IF NOT EXISTS bancoapam
                             (id INTEGER PRIMARY KEY AUTOINCREMENT,
                             data_registro DATE NOT NULL,
                             email TEXT NOT NULL,
@@ -42,31 +48,29 @@ class RegistrationSystem:
                             em_que_pode_ajuar_apam TEXT,
                             outras_formas_de_ajudar_apam TEXT,
                             expectativa_trabalho_voluntario TEXT)''')
-        self.conn.commit()
+
 
     def register_apam(self, values_table: list, table: str='bancoapam'):
         colunas = self.get_columns(table=table)
         inter = ['?'] * len(colunas)  # Use o comprimento de colunas
         query = f"INSERT INTO {table}({', '.join(colunas)}) VALUES ({','.join(inter)})"
-        self.c.execute(query, values_table)
-        self.conn.commit()
+        self.db_execute(query=query, param=values_table)
         messagebox.showinfo('Sucesso', 'Registrado com Sucesso!')
         print("Registrado com Sucesso!")
 
 
-
     def view_all_bancoapam(self, table: str='bancoapam'):
-        self.c.execute(f"SELECT * FROM {table}")
-        data = self.c.fetchall()
+        data = self.db_execute(f"SELECT * FROM {table}")
         return data
 
+
     def search_apam(self, id, table: str='bancoapam'):
-        self.c.execute(f"SELECT * FROM {table} WHERE id=?", (id,))
-        data = self.c.fetchone()
+        data = self.db_execute(f"SELECT * FROM {table} WHERE id=?", (id,))
         if data:
             return data
         else:
             messagebox.showerror('Erro', f'Nenhum ID {id} encontrado!')
+
 
     def update_apam(self, valor_atualizado, table: str='bancoapam'):
         data = valor_atualizado
@@ -74,37 +78,32 @@ class RegistrationSystem:
         if data:
             #ajuste os campos da linha abaixo conforme as talbelas
             query = f"UPDATE {table} SET data_registro=?, email=?, name=?, cpf=?, rg=?, data_nascimento=?, sexo=?, naturaliade=?, estado_civil=?, endereco=?, telefone_fixo=?, telefone_celular=?, nome_empresa=?, endereco_empresa=?, telefone_empresa=?, profissao=?, valor_colaborar=?, em_que_pode_ajuar_apam=?, outras_formas_de_ajudar_apam=?, expectativa_trabalho_voluntario=? WHERE id=?"
-            self.c.execute(query, valor_atualizado)
-            self.conn.commit()
+            self.db_execute(query, valor_atualizado)
             messagebox.showinfo('Sucesso', f'Informação do ID {valor_atualizado[0]} foi atualizada!')
         else:
             messagebox.showerror('Erro', f"Nenhum ID {valor_atualizado[0]} encontrado!")
 
+
     def delete_apam(self, id, table: str='bancoapam'):
-        self.c.execute(f"SELECT * FROM {table} WHERE id=?", (id,))
-        data = self.c.fetchone()
+        data = self.db_execute(f"SELECT * FROM {table} WHERE id=?", (id,))
         if data:
-            self.c.execute(f"DELETE FROM {table} WHERE id=?", (id,))
-            self.conn.commit()
+            self.db_execute(f"DELETE FROM {table} WHERE id=?", (id,))
             messagebox.showinfo('Sucesso', f"Informação do ID {id} foi deletada!")
         else:
             messagebox.showerror('Erro', f"Nenhum ID {id} encontrado!")
-    
-    
+
+
     def get_name(self, table: str='bancoapam'):
-        self.c.execute(f'SELECT name, oid FROM {table}')
-        data = self.c.fetchall()
+        data = self.db_execute(f'SELECT name, oid FROM {table}')
         return data
 
 
     def export_to_excel(self, table: str='bancoapam'):
-        self.c.execute(f"SELECT * FROM {table}")
-        to_excel = self.c.fetchall()
+        to_excel = self.db_execute(f"SELECT * FROM {table}")
         colunas = self.get_columns(table=table)
         colunas.insert(0,'id')
         to_excel = pd.DataFrame(to_excel, columns=colunas)
         to_excel.to_excel(f'{table}.xlsx')
-        self.conn.commit()
 
 
 # create a registration system instance
