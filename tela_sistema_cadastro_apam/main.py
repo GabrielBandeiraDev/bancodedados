@@ -31,6 +31,7 @@ co3 = "#00a095"  # Verde
 co4 = "#403d3d"   # letra
 co6 = "#003452"   # azul
 
+autocompleteList = []
 class Example(ThemedTk):
     """
     Example that is used to create screenshots for new themes.
@@ -153,7 +154,9 @@ def validar(lista: list):
 
 
 # ------------- funcoes para CRUD ---------------
-def adicionar():    
+def adicionar():
+    global autocompleteList
+        
     data_registro = d_data_registro.get()
     email = e_email.get()
     name = n_nome.get()
@@ -178,21 +181,23 @@ def adicionar():
     expectativa_trabalho_volutario = e_expectativa_trabalho_volutario.get("1.0", END)
     
     lista = [data_registro, email, name, cpf, rg, data_nascimento, sexo, naturalidade, estado_civil, endereco, telefone_fixo, telefone_celular, nome_empresa, endereco_empresa, telefone_empresa, profissao, valor_colaborar, em_que_pode_ajudar_apam, outras_formas_de_ajudar_apam, expectativa_trabalho_volutario]
-    autocompleteList = [f'{nome[0]} ({nome[1]})' for nome in registration_system.get_name()]  # Tornar global
     
 
 # ------------- Validações ---------------
     if not validar(lista):
         registration_system.register_apam(lista)
-
-        # Limpando campos de entrada    
+        # Atualiza autocompleteList com novos nomes
+        autocompleteList = [f'{nome[0]} ({nome[1]})' for nome in registration_system.get_name()]  # Adicione esta linha
+        # Limpando campos de entrada 
+        e_procurar.set_completion_list(autocompleteList)
+           
         limpar_campos(lista_campos)
 
     mostrar_tabela()
 
 
 # funcao procurar
-def procurar():
+def procurar():    
 	# obtendo o id
     id = re.search(r'\((\d+)\)', e_procurar.get())
     id_apam = int(id.group(1))
@@ -210,9 +215,9 @@ def procurar():
     c_cpf.insert(END,dados[0][4])
     r_rg.insert(END,dados[0][5])
     d_data_nascimento.insert(END,dados[0][6])
-    s_sexo.insert(END,dados[0][7])
+    s_sexo.set(dados[0][7])
     n_naturalidade.insert(END,dados[0][8])
-    e_estado_civil.insert(END,dados[0][9])
+    e_estado_civil.set(dados[0][9])
     e_endereco.insert(END,dados[0][10])
     t_telefone_fixo.insert(END,dados[0][11])
     t_telefone_celular.insert(END,dados[0][12])
@@ -228,6 +233,7 @@ def procurar():
 
 
 def atualizar():
+    global autocompleteList
     # obtendo o id
     if not e_procurar.get():
         messagebox.showerror("Erro", "Insira o ID do Voluntario")
@@ -274,6 +280,8 @@ def atualizar():
 
 # funcao deletar
 def deletar():
+    global autocompleteList
+    
 	# obtendo o id
     id = re.search(r'\((\d+)\)', e_procurar.get())
     id_apam = int(id.group(1))
@@ -435,6 +443,8 @@ def limpar_campos(lista: list = lista_campos):
     lista[17].delete("1.0", END)
     lista[18].delete("1.0", END)
     lista[19].delete("1.0", END)
+    s_sexo.set('')
+    e_estado_civil.set('') 
 
 
 # Tabela do banco apam
